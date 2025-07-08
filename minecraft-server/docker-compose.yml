@@ -1,0 +1,41 @@
+
+services:
+  minecraft-java:
+    image: itzg/minecraft-server
+    container_name: mcj-server
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: ${EULA}
+      MEMORY: ${MEMORY}
+      DIFFICULTY: ${DIFFICULTY}
+      MODE: ${MODE}
+      MOTD: ${MOTD}
+      TZ: ${TZ}
+      ENABLE_RCON: ${ENABLE_RCON}
+      RCON_PASSWORD: ${RCON_PASSWORD}
+    volumes:
+      - ./java/data:/data
+    restart: unless-stopped
+  minecraft-bedrock:
+    image: itzg/minecraft-bedrock-server
+    container_name: mcb-server
+    ports:
+      - "19132:19132/udp"
+    environment:
+      EULA: ${EULA}
+      DIFFICULTY: ${DIFFICULTY}
+      MOTD: ${MOTD}
+      TZ: ${TZ}
+    volumes:
+      - ./bedrock/data:/data
+    restart: unless-stopped
+  minecraft-admin:
+    image: alpine
+    container_name: mc-admin-server
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./scripts:/scripts
+      - ./java/data:/java_data:ro
+      - ./bedrock/data:/bedrock_data:ro
+    restart: unless-stopped

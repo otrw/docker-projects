@@ -1,0 +1,54 @@
+# Cloud credentials/configs
+.azure/
+.aws/
+*.publishsettings
+*.azureauth
+
+# Infrastructure as Code
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform.lock.hcl
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+
+# Environment/secrets
+.env
+.env.*
+!config.template.json
+!.env.template
+*.pem
+*.key
+id_rsa*
+*.pfx
+*.cer
+*.p12
+*password*
+*secret*
+*credential*
+config.local.*
+config.json
+
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Personal/draft notes (Obsidian etc.)
+drafts/
+personal/
+private/
+inbox/
+__inbox/
+.obsidian/
+
+# Docker volumes, configs and overrides
+docker-compose.override.yml
+**/data/
+**/.env
