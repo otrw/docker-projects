@@ -31,6 +31,10 @@ services:
       - ./bedrock/data:/data
     restart: unless-stopped
   minecraft-admin:
+  # This service is used for administrative tasks and scripts
+  # It mounts the scripts and data directories for both Java and Bedrock servers
+  # and runs a lightweight Alpine container to keep the environment ready for admin tasks
+  # It does not run a Minecraft server but provides a persistent environment for management
     image: alpine
     container_name: mc-admin-server
     command: ["tail", "-f", "/dev/null"]
