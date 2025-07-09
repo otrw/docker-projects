@@ -31,7 +31,7 @@ Each subfolder contains a self-contained Docker project. To get started:
 1. **Pick a folder** (e.g. `minecraft-server`)
 2. **Copy the environment template**:
    ```bash
-   cp .env.template .env
+   cp env.template .env
    ```
 3. **Create any required directory structure** (check projects `README.md`)
 4. **Start the container**:
