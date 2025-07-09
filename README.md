@@ -24,7 +24,7 @@ More to come as I build and learn.
 
 ---
 
-## 🛠️ How to Use
+## How to Use
 
 Each subfolder contains a self-contained Docker project. To get started:
 
