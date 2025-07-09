@@ -2,7 +2,15 @@
 
 This is a public collection of Docker-based setups I've created while learning containerization, scripting, and infrastructure practices.
 
->[!WARNING] This repo is intentionally messy — it's a work-in-progress learning space. Expect rough edges, broken things, and occasional good ideas.
+> ⚠️  This repo is intentionally messy — it's a work-in-progress learning space. Expect rough edges, broken things, and occasional good ideas.
+
+### About This Repo
+
+This monorepo exists as part of my effort to “learn in public” while pivoting from Windows sysadmin work into modern cloud-native tooling. Mistakes, false starts, and rework are all part of the journey.
+
+If you find something useful here — great! If not, I'm still learning anyway. 😄
+
+
 
 ---
 
@@ -30,13 +38,3 @@ Each subfolder contains a self-contained Docker project. To get started:
    ```bash
    docker compose up -d
    ```
-
----
-
-## About This Repo
-
-This monorepo exists as part of my effort to “learn in public” while pivoting from Windows sysadmin work into modern cloud-native tooling. Mistakes, false starts, and rework are all part of the journey.
-
-If you find something useful here — great! If not, I'm still learning anyway. 😄
-
----
