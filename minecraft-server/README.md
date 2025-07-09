@@ -49,4 +49,7 @@ sudo chmod -R 755 java/data/ bedrock/data/
 >docker exec -it container_name id
 >```
 
-
+3. Start the containers.
+```bash
+docker compose up -d
+```
