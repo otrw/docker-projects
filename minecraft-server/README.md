@@ -1,55 +1,76 @@
 # Minecraft Server (Docker)
 
-  
+This setup runs both Java and Bedrock Minecraft servers in Docker, along with an optional admin container for scripts and utilities.
 
-## ✅ What this does
+---
 
-- Runs a Minecraft server in Docker.
+## What this includes
 
-- Stores world data in `data/` (gitignored).
+- `itzg/minecraft-server` for Java Edition
+- `itzg/minecraft-bedrock-server` for Bedrock Edition
+- A minimal Alpine-based admin container for maintenance tasks
+- Volume persistence for world data
 
+---
 
-## 🛠️ Setup
+## Setup Instructions
 
-1. Copy `.env.template` to `.env` and fill in values.
+### 1. Copy the environment file
 
 ```bash
-
 cp .env.template .env
-
 ```
+Edit .env and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc.).
 
-2. Create the local `data/` folders for the Minecraft Editions, these will map to the containers.
+---
 
+### 2. Create the directory structure
 ```bash
-
-mkdir -p java/data/ bedrock/data admin/
-
+mkdir -p java/data bedrock/data scripts
 ```
+The scripts folder is optional and used only by the admin container.
 
->[!NOTE]
-The admin directory is optional, this will map to the scripts folder containing any admin scripts and utilities.
+---
 
-# Update permissions for the data directories
-
+### 3. Set directory permissions
 ```bash
+# Give full access to the container (which runs as root)
+sudo chown -R root:root java/data bedrock/data
 
-# RWX for the container
-
-sudo chown -R root:root java/data/ bedrock/data/
-
-# RX for other users
-
-sudo chmod -R 755 java/data/ bedrock/data/
-
+# Provide read/execute access to others
+sudo chmod -R 755 java/data bedrock/data
 ```
 
->[!TIP]To Check user the container is running as:
->```bash
->docker exec -it container_name id
->```
+To confirm which user a container is running as:
+```bash
+docker exec -it mcj-server id
+```
 
-3. Start the containers.
+---
+
+### 4. Start the containers
 ```bash
 docker compose up -d
 ```
+
+---
+
+## Project Structure
+```bash
+minecraft-server/
+├── docker-compose.yml
+├── .env.template
+├── java/
+│   └── data/
+├── bedrock/
+│   └── data/
+├── scripts/              # Optional
+└── README.md
+```
+
+---
+
+## Notes
+- World data is stored in java/data and bedrock/data, both excluded from version control.
+- The admin container does not run a Minecraft server — it's intended for running scripts or inspecting data volumes.
+- This project is part of a broader learning process and may evolve or change over time.
