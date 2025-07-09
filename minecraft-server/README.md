@@ -18,9 +18,9 @@ This setup runs both Java and Bedrock Minecraft servers in Docker, along with an
 ### 1. Copy the environment file
 
 ```bash
-cp .env.template .env
+cp env.template .env
 ```
-Edit .env and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc.).
+Edit `.env` and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc.).
 
 ---
 
@@ -56,10 +56,10 @@ docker compose up -d
 ---
 
 ## Project Structure
-```bash
+```plaintext
 minecraft-server/
 ├── docker-compose.yml
-├── .env.template
+├── env.template
 ├── java/
 │   └── data/
 ├── bedrock/
@@ -71,6 +71,6 @@ minecraft-server/
 ---
 
 ## Notes
-- World data is stored in java/data and bedrock/data, both excluded from version control.
+- World data is stored in `java/data` and `bedrock/data`, both excluded from version control.
 - The admin container does not run a Minecraft server — it's intended for running scripts or inspecting data volumes.
 - This project is part of a broader learning process and may evolve or change over time.
