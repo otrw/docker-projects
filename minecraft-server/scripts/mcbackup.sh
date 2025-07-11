@@ -7,7 +7,7 @@
 # TODO: Schedule with cron
 # TODO: Add log rotation or limit log file size
 #
-PROJDIR="$HOME/projects/docker-projects/minecraft-server"
+PROJDIR="$HOME/docker-projects/minecraft-server"
 
 DATE=$(date +%Y%m%d_%H%M%S)
 BACKUPDIR="$PROJDIR/scripts/backups"

@@ -1,14 +1,20 @@
 #!/bin/bash
-#
 # Minecraft Management script used to start common tasks when the minecraft container is running.
-# More of a lesson in bash scripting.
+# 
 # TODO: Add more functionality to this script, such as:
-# - Backup worlds
-# - Check for updates
-# - Manage plugins/mods
-# - Monitor server performance
-# - Create variable for the server name so it can to remove hard coded 
-# - Remove client option.
+# TODO: Backup Separate worlds
+# TODO: Restart Admin server
+# TODO: Check for updates
+# TODO: Manage plugins/mods
+# TODO: Monitor server performance
+# TODO: Create variable for the server names so it can to remove hard coded 
+# TODO: Client Option. Basic usage removed for now. Add later, check for local install and run client.
+
+PROJDIR="$HOME/projects/docker-projects/minecraft-server"
+
+MCJSERVER="mcj-server" # Java Edition server
+MCBSERVER="mcb-server" # Bedrock Edition server
+BACKUPDIR="$PROJDIR/scripts/backups"
 
 case "$1" in
   start)
@@ -44,21 +50,6 @@ case "$1" in
   console)
     echo "Connecting to server console (type 'exit' to quit)..."
     docker exec -i mc-server rcon-cli
-    ;;
-  client)
-    # Default path - edit this if your launcher is elsewhere
-  MC_LAUNCHER_PATH=${MC_LAUNCHER_PATH:-"$HOME/projects/minecraft-server/minecraft-launcher/minecraft-launcher"}
-  if [ -f "$MC_LAUNCHER_PATH" ]; then
-    echo "Starting Minecraft Launcher"
-    exec "$MC_LAUNCHER_PATH" &
-  else
-    echo "Error: Minecraft Launcher not found at $MC_LAUNCHER_PATH"
-    echo "Please check the path or set the correct path with: export MC_LAUNCHER_PATH=/path/to/launcher"
-  fi
-  ;;
-  *)
-    echo "Usage: $0 {start|stop|restart|backup|status|console|client}"
-    exit 1
     ;;
 esac
 ```
