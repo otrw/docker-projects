@@ -7,6 +7,8 @@ services:
       - "25565:25565"
     environment:
       EULA: ${EULA}
+      TYPE: ${TYPE}
+      VERSION: ${VERSION}
       MEMORY: ${MEMORY}
       DIFFICULTY: ${DIFFICULTY}
       MODE: ${MODE}
@@ -43,3 +45,11 @@ services:
       - ./java/data:/java_data:ro
       - ./bedrock/data:/bedrock_data:ro
     restart: unless-stopped
+  geyser:
+    image: nefalad/geyser
+    container_name: geyser
+    restart: unless-stopped
+    ports:
+      - "19132:19132/udp"
+    volumes:
+      - ./geyser/config:/config
