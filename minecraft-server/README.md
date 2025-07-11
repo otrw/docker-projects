@@ -26,7 +26,7 @@ Edit `.env` and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc
 
 ### 2. Create the directory structure
 ```bash
-mkdir -p java/data bedrock/data scripts
+mkdir -p java/data bedrock/data geyser/config scripts
 ```
 The scripts folder is optional and used only by the admin container.
 
