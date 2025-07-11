@@ -46,7 +46,7 @@ services:
       - ./bedrock/data:/bedrock_data:ro
     restart: unless-stopped
   geyser:
-    image: nefalad/geyser
+    image: nefald/geyser:latest
     container_name: geyser
     restart: unless-stopped
     ports:
