@@ -19,6 +19,8 @@ services:
     volumes:
       - ./java/data:/data
     restart: unless-stopped
+# Uncomment the following section to enable a Bedrock server
+# Cannot run Bedrock and Geyser at the same time
 #  minecraft-bedrock:
 #    image: itzg/minecraft-bedrock-server
 #    container_name: mcb-server
@@ -45,6 +47,11 @@ services:
       - ./java/data:/java_data:ro
       - ./bedrock/data:/bedrock_data:ro
     restart: unless-stopped
+  
+  # GeyserMC service for bridging Java and Bedrock editions
+  # This service allows Bedrock clients to connect to the Java server
+  # It uses the nefald/geyser image and mounts a configuration directory
+  # Cannot run Bedrock and Geyser at the same time.
   geyser:
     image: nefald/geyser:latest
     container_name: geyser
