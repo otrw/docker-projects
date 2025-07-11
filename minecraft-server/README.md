@@ -35,10 +35,10 @@ The scripts folder is optional and used only by the admin container.
 ### 3. Set directory permissions
 ```bash
 # Give full access to the container (which runs as root)
-sudo chown -R root:root java/data bedrock/data
+sudo chown -R root:root java/data bedrock/data geyser/config
 
 # Provide read/execute access to others
-sudo chmod -R 755 java/data bedrock/data
+sudo chmod -R 755 java/data bedrock/data geyser/config
 ```
 
 To confirm which user a container is running as:
