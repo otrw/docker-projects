@@ -19,19 +19,19 @@ services:
     volumes:
       - ./java/data:/data
     restart: unless-stopped
-  minecraft-bedrock:
-    image: itzg/minecraft-bedrock-server
-    container_name: mcb-server
-    ports:
-      - "19132:19132/udp"
-    environment:
-      EULA: ${EULA}
-      DIFFICULTY: ${DIFFICULTY}
-      MOTD: ${MOTD}
-      TZ: ${TZ}
-    volumes:
-      - ./bedrock/data:/data
-    restart: unless-stopped
+#  minecraft-bedrock:
+#    image: itzg/minecraft-bedrock-server
+#    container_name: mcb-server
+#    ports:
+#      - "19132:19132/udp"
+#    environment:
+#      EULA: ${EULA}
+#      DIFFICULTY: ${DIFFICULTY}
+#      MOTD: ${MOTD}
+#      TZ: ${TZ}
+#    volumes:
+#      - ./bedrock/data:/data
+#    restart: unless-stopped
   minecraft-admin:
   # This service is used for administrative tasks and scripts
   # It mounts the scripts and data directories for both Java and Bedrock servers
