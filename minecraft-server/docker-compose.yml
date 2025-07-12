@@ -1,5 +1,5 @@
-
 services:
+# Minecraft Java server configuration
   minecraft-java:
     image: itzg/minecraft-server
     container_name: mcj-server
@@ -7,8 +7,6 @@ services:
       - "25565:25565"
     environment:
       EULA: ${EULA}
-      TYPE: ${TYPE}
-      VERSION: ${VERSION}
       MEMORY: ${MEMORY}
       DIFFICULTY: ${DIFFICULTY}
       MODE: ${MODE}
@@ -19,21 +17,20 @@ services:
     volumes:
       - ./java/data:/data
     restart: unless-stopped
-# Uncomment the following section to enable a Bedrock server
-# Cannot run Bedrock and Geyser at the same time
-#  minecraft-bedrock:
-#    image: itzg/minecraft-bedrock-server
-#    container_name: mcb-server
-#    ports:
-#      - "19132:19132/udp"
-#    environment:
-#      EULA: ${EULA}
-#      DIFFICULTY: ${DIFFICULTY}
-#      MOTD: ${MOTD}
-#      TZ: ${TZ}
-#    volumes:
-#      - ./bedrock/data:/data
-#    restart: unless-stopped
+# Minecraft Bedrock server configuration
+  minecraft-bedrock:
+    image: itzg/minecraft-bedrock-server
+    container_name: mcb-server
+    ports:
+      - "19132:19132/udp"
+    environment:
+      EULA: ${EULA}
+      DIFFICULTY: ${DIFFICULTY}
+      MOTD: ${MOTD}
+      TZ: ${TZ}
+    volumes:
+      - ./bedrock/data:/data
+    restart: unless-stopped
   minecraft-admin:
   # This service is used for administrative tasks and scripts
   # It mounts the scripts and data directories for both Java and Bedrock servers
@@ -47,16 +44,3 @@ services:
       - ./java/data:/java_data:ro
       - ./bedrock/data:/bedrock_data:ro
     restart: unless-stopped
-  
-  # GeyserMC service for bridging Java and Bedrock editions
-  # This service allows Bedrock clients to connect to the Java server
-  # It uses the nefald/geyser image and mounts a configuration directory
-  # Cannot run Bedrock and Geyser at the same time.
-  geyser:
-    image: nefald/geyser:latest
-    container_name: geyser
-    restart: unless-stopped
-    ports:
-      - "19132:19132/udp"
-    volumes:
-      - ./geyser/config:/config

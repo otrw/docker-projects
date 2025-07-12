@@ -10,6 +10,7 @@ This setup runs both Java and Bedrock Minecraft servers in Docker, along with an
 - `itzg/minecraft-bedrock-server` for Bedrock Edition
 - A minimal Alpine-based admin container for maintenance tasks
 - Volume persistence for world data
+- Basic Backup & Management scripts
 
 ---
 
@@ -26,7 +27,7 @@ Edit `.env` and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc
 
 ### 2. Create the directory structure
 ```bash
-mkdir -p java/data bedrock/data geyser/config scripts
+mkdir -p java/data bedrock/data scripts
 ```
 The scripts folder is optional and used only by the admin container.
 
@@ -35,10 +36,10 @@ The scripts folder is optional and used only by the admin container.
 ### 3. Set directory permissions
 ```bash
 # Give full access to the container (which runs as root)
-sudo chown -R root:root java/data bedrock/data geyser/config
+sudo chown -R root:root java/data bedrock/data
 
 # Provide read/execute access to others
-sudo chmod -R 755 java/data bedrock/data geyser/config
+sudo chmod -R 755 java/data bedrock/data
 ```
 
 To confirm which user a container is running as:
