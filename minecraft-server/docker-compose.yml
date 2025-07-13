@@ -40,7 +40,8 @@ services:
     container_name: mc-admin-server
     command: ["/scripts/start-admin.sh"]
     volumes:
-      - ./scripts:/scripts
-      - ./java/data:/java_data:ro
-      - ./bedrock/data:/bedrock_data:ro
+      - /var/run/docker.sock:/var/run/docker.sock # Allows the container to manage Docker
+      - ./scripts:/scripts # Mount the scripts directory
+      - ./java/data:/java_data:ro # Mount the Java server data directory as read-only
+      - ./bedrock/data:/bedrock_data:ro # Mount the Bedrock server data directory as read-only
     restart: unless-stopped
