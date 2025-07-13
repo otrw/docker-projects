@@ -54,6 +54,14 @@ docker exec -it mcj-server id
 docker compose up -d
 ```
 
+### 5. Admin Container
+This container can be used to run scripts to for various admin tasks. Example:
+```bash
+# Backup the Mincraft worlds using mcbackup.sh
+docker exec mc-admin-server sh /scripts/mcbackup.sh
+
+```
+
 ---
 
 ## Project Structure
