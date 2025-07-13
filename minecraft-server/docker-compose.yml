@@ -38,7 +38,7 @@ services:
   # It does not run a Minecraft server but provides a persistent environment for management
     image: alpine
     container_name: mc-admin-server
-    command: ["tail", "-f", "/dev/null"]
+    command: ["/scripts/start-admin.sh"]
     volumes:
       - ./scripts:/scripts
       - ./java/data:/java_data:ro
