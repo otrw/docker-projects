@@ -1,19 +1,24 @@
 #!/bin/sh
+# mcbackup.sh
 # Simple backup of both Java and Bedrock worlds
-# tar Example:
-# tar -czf $HOME/minecraft/scripts/backups/bedrock_world_$DATE.tar.gz -C $HOME/minecraft/bedrock/data .
 #
 # TODO: Add retention policy to delete old backups
 # TODO: Schedule with cron
 # TODO: Add log rotation or limit log file size
-#
-PROJDIR="$HOME/docker-projects/minecraft-server"
 
 DATE=$(date +%Y%m%d_%H%M%S)
-BACKUPDIR="$PROJDIR/scripts/backups"
+SCRIPTDIR=$(dirname "$0")
+BACKUPDIR="$SCRIPTDIR/backups"
+
+# Assumes the conatainer mounts volumes:
+# - /scripts
+# - /bedrock/data
+# - /java/data
+
 LOGFILE="$BACKUPDIR/backup.log"
-BEDROCKDATA="$PROJDIR/bedrock/data"
-JAVADATA="$PROJDIR/java/data"
+
+BEDROCKDATA="/bedrock_data"
+JAVADATA="/java_data"
 
 # Create backup directory if it doesn't exist
 if [ ! -d "$BACKUPDIR" ]; then
