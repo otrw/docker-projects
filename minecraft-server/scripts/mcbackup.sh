@@ -2,7 +2,6 @@
 # mcbackup.sh
 # Simple backup of both Java and Bedrock worlds
 #
-# TODO: Add retention policy to delete old backups
 # TODO: Schedule with cron
 # TODO: Add log rotation or limit log file size
 
@@ -46,4 +45,15 @@ else
 fi
 
 echo "[$DATE] Backup Jobs Complete. See [$LOGFILE] for details."
+
+# Maintenance: Clean up old backups
+# Retention policy: Keep the latest 7 backups for each world
+echo "[$DATE] Cleaning up old backups..." | tee -a "$LOGFILE"
+# Find and delete backups older than the latest 7 for each world
+#Java world
+find "$BACKUPDIR" -name "java_world_*.tar.gz" -type f | sort -r | tail -n +8 | xargs -r rm --
+# Bedrock world
+find "$BACKUPDIR" -name "bedrock_world_*.tar.gz" -type f | sort -r | tail -n +8 | xargs -r rm --
+echo "[$DATE] Old backups cleaned up. Retention policy applied." | tee -a "$LOGFILE"
+
 
