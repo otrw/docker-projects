@@ -6,11 +6,16 @@ set -e  # Exit immediately if a command exits with a non-zero status.
 
 # Get the directory of the script
 SCRIPTDIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECTROOT="$(dirname "$SCRIPT_DIR")"
+PROJECTROOT="$(dirname "$SCRIPTDIR")"
+DATE=$(date +%Y%m%d_%H%M%S)
 
 # Assign positional parameters to variables
 SERVER=$1
 ACTION=$2
+
+BACKUPDIR="$SCRIPTDIR/backups" # Directory where backups will be stored
+
+mkdir -p "$BACKUPDIR" # Create backup directory if it doesn't exist 
 
 MCJSERVER="mcj-server" # Java Edition server
 MCBSERVER="mcb-server" # Bedrock Edition server
@@ -20,9 +25,11 @@ MCBSERVER="mcb-server" # Bedrock Edition server
 case "$SERVER" in
   java)
     CONTAINER="$MCJSERVER"
+    SRC="/java_data"
     ;;
   bedrock)
     CONTAINER="$MCBSERVER"
+    SRC="/bedrock_data"
     ;;
   *)
     echo "Usage: $0 {java|bedrock} {start|stop|restart|backup|status|logs}"
@@ -42,7 +49,8 @@ case "$ACTION" in
     docker inspect -f '{{.State.Status}}' "$CONTAINER"
     ;;  
   backup)
-    docker exec "$CONTAINER" tar -czf /scripts/backups/$(basename "$CONTAINER")_backup_$(date +%Y%m%d_%H%M%S).tar.gz /data
+    tar -czf "$BACKUPDIR/${SERVER}_world_$DATE.tar.gz" -C "$SRC" .
+    echo "[$DATE] Backup complete for $SERVER world. Backup file: $BACKUPDIR/${SERVER}_world_$DATE.tar.gz"
     ;;
   *)
     echo "Usage: $0 {java|bedrock} {start|stop|restart|backup|status|logs}"
