@@ -42,7 +42,7 @@ case "$ACTION" in
     docker inspect -f '{{.State.Status}}' "$CONTAINER"
     ;;  
   backup)
-    docker exec "$CONTAINER" tar -czf $SCRIPTDIR/backups/$(basename "$CONTAINER")_backup_$(date +%Y%m%d_%H%M%S).tar.gz /data
+    docker exec "$CONTAINER" tar -czf /scripts/backups/$(basename "$CONTAINER")_backup_$(date +%Y%m%d_%H%M%S).tar.gz /data
     ;;
   *)
     echo "Usage: $0 {java|bedrock} {start|stop|restart|backup|status|logs}"
