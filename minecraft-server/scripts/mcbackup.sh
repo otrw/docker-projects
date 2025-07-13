@@ -2,8 +2,6 @@
 # mcbackup.sh
 # Simple backup of both Java and Bedrock worlds
 #
-# TODO: Schedule with cron
-# TODO: Add log rotation or limit log file size
 
 DATE=$(date +%Y%m%d_%H%M%S)
 SCRIPTDIR=$(dirname "$0")
@@ -56,4 +54,12 @@ find "$BACKUPDIR" -name "java_world_*.tar.gz" -type f | sort -r | tail -n +8 | x
 find "$BACKUPDIR" -name "bedrock_world_*.tar.gz" -type f | sort -r | tail -n +8 | xargs -r rm --
 echo "[$DATE] Old backups cleaned up. Retention policy applied." | tee -a "$LOGFILE"
 
+# Maintenance: Simple log rotation for backup.log
+# Limit log file size to 10MB, rotate if necessary
+MAX_SIZE=10485760  # 10 MB (10 × 1024 × 1024)
 
+if [ -f "$LOGFILE" ] && [ $(stat -c%s "$LOGFILE") -gt $MAX_SIZE ]; then
+    mv "$LOGFILE" "$LOGFILE.old"
+    touch "$LOGFILE"
+    echo "[$DATE] Log rotated (old saved as backup.log.old)" > "$LOGFILE"
+fi

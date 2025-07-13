@@ -55,14 +55,16 @@ docker compose up -d
 ```
 
 ### 5. Admin Container
-This container can be used to run scripts to for various admin tasks. Example:
+
+**Note:** A simple cron job will be set when the container is initialized to backup on a 12 hour rotation.
+
+This container can be used to run scripts to for various admin tasks.
 ```bash
 # Backup the Minecraft worlds using mcbackup.sh
 docker exec mc-admin-server sh /scripts/mcbackup.sh
+# This job will also cleanup log files and previous backups
 
 ```
->[!NOTE] A simple cron job will be set when the container is initialized to backup on a 12 hour rotation.
-
 
 ---
 
