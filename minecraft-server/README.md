@@ -61,6 +61,8 @@ This container can be used to run scripts to for various admin tasks. Example:
 docker exec mc-admin-server sh /scripts/mcbackup.sh
 
 ```
+>[!NOTE] A simple cron job will be set when the cotainer is initialized to backup on a 12 hour rotation.
+
 
 ---
 
