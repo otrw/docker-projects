@@ -4,9 +4,9 @@
 
 set -e  # Exit immediately if a command exits with a non-zero status.
 
-# Get the directory of the script
-SCRIPTDIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECTROOT="$(dirname "$SCRIPTDIR")"
+# Resolve the script path and directory
+SCRIPTPATH="$(readlink -f "$0")" # Resolve the symlink to get the actual path
+SCRIPTDIR="$(cd "$(dirname "$SCRIPTPATH")" && pwd)" # Get the directory of the script
 DATE=$(date +%Y%m%d_%H%M%S)
 
 # Assign positional parameters to variables
