@@ -7,6 +7,8 @@ set -e
 
 # Installing necessary packages.
 # TODO: Look at using a DOCKERFILE to install these packages instead of doing it at runtime.
+# TODO: Colour output for better visibility
+
 
 # Check if bash is installed
 if ! command -v bash >/dev/null 2>&1; then
