@@ -1,55 +1,51 @@
 #!/bin/bash
 # Minecraft Management script used to start common tasks when the minecraft container is running.
-# 
-# TODO: Add more functionality to this script, such as:
-# TODO: Backup Separate worlds
-# TODO: Restart Admin server
-# TODO: Check for updates
-# TODO: Manage plugins/mods
-# TODO: Monitor server performance
-# TODO: Create variable for the server names so it can to remove hard coded 
-# TODO: Client Option. Basic usage removed for now. Add later, check for local install and run client.
+# This script is intended to be run inside a Docker container that manages Minecraft servers.
 
-PROJDIR="$HOME/projects/docker-projects/minecraft-server"
+set -e  # Exit immediately if a command exits with a non-zero status.
+
+# Get the directory of the script
+SCRIPTDIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECTROOT="$(dirname "$SCRIPT_DIR")"
+
+# Assign positional parameters to variables
+SERVER=$1
+ACTION=$2
 
 MCJSERVER="mcj-server" # Java Edition server
 MCBSERVER="mcb-server" # Bedrock Edition server
-BACKUPDIR="$PROJDIR/scripts/backups"
 
-case "$1" in
-  start)
-    echo "Starting Minecraft server..."
-    docker start mc-server
+# Case statement to handle different server types and actions
+# Validate the server name argument
+case "$SERVER" in
+  java)
+    CONTAINER="$MCJSERVER"
     ;;
-  stop)
-    echo "Stopping Minecraft server..."
-    docker exec mc-server rcon-cli say Server shutting down in 10 seconds...
-    sleep 10
-    docker exec mc-server rcon-cli save-all
-    sleep 2
-    docker stop mc-server
+  bedrock)
+    CONTAINER="$MCBSERVER"
     ;;
-  restart)
-    echo "Restarting Minecraft server..."
-    $0 stop
-    sleep 5
-    $0 start
-    ;;
-  backup)
-    echo "Running backup..."
-    ~/minecraft-backup.sh
-    ;;
-  status)
-    if [ "$(docker inspect -f {{.State.Running}} mc-server 2>/dev/null)" == "true" ]; then
-      echo "Minecraft server is running"
-      echo "Players online: $(docker exec mc-server rcon-cli list | grep 'There are')"
-    else
-      echo "Minecraft server is not running"
-    fi
-    ;;
-  console)
-    echo "Connecting to server console (type 'exit' to quit)..."
-    docker exec -i mc-server rcon-cli
+  *)
+    echo "Usage: $0 {java|bedrock} {start|stop|restart|backup|status|logs}"
+    exit 1
     ;;
 esac
-```
+
+# Validate actions argument
+case "$ACTION" in
+  start|stop|restart)
+    docker "$ACTION" "$CONTAINER"
+    ;;
+  logs)
+    docker logs -f "$CONTAINER"
+    ;;
+  status)
+    docker inspect -f '{{.State.Status}}' "$CONTAINER"
+    ;;  
+  backup)
+    docker exec "$CONTAINER" tar -czf $SCRIPTDIR/backups/$(basename "$CONTAINER")_backup_$(date +%Y%m%d_%H%M%S).tar.gz /data
+    ;;
+  *)
+    echo "Usage: $0 {java|bedrock} {start|stop|restart|backup|status|logs}"
+    exit 1
+    ;;
+esac

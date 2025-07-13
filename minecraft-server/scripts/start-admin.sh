@@ -5,10 +5,27 @@
 # This will ensure that if any command fails, the script will exit immediately. 
 set -e
 
+# Installing necessary packages.
+# TODO: Look at using a DOCKERFILE to install these packages instead of doing it at runtime.
+
 # Check if bash is installed
 if ! command -v bash >/dev/null 2>&1; then
     echo "$(date '+%Y-%m-%d %H:%M:%S') [startup] Bash not found, installing..."
     /sbin/apk add --no-cache bash
+fi
+# Check if docker-cli is installed
+if ! command -v docker >/dev/null 2>&1; then
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [startup] Docker CLI not found, installing..."
+    /sbin/apk add --no-cache docker-cli
+fi
+
+# Ensure the mcm management script is available globally
+if [ -f /scripts/mcm.sh ]; then
+    ln -sf /scripts/mcm.sh /usr/local/bin/mcm
+    chmod +x /usr/local/bin/mcm
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [startup] Linked mcm to /usr/local/bin/mcm"
+else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') [startup] mcm.sh not found at /scripts/mcm.sh"
 fi
 
 # Ensure the cron setup script exists
