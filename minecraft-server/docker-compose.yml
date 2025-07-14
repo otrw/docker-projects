@@ -1,4 +1,4 @@
-services:
+ services:
 # Minecraft Java server configuration
   minecraft-java:
     image: itzg/minecraft-server
