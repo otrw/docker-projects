@@ -8,3 +8,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/data
+    environment:
+      - TZ=Europe/London # Set your timezone
+# This portainer service uses the official Portainer CE image.
+# It is intentionally configured to be a simple setup with the default port 9000.
+# Useful as a simple docker-compose template.
