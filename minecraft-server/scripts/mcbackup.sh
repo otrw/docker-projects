@@ -7,7 +7,7 @@ DATE=$(date +%Y%m%d_%H%M%S)
 SCRIPTDIR=$(dirname "$0")
 BACKUPDIR="$SCRIPTDIR/backups"
 
-# Assumes the conatainer mounts volumes:
+# Assumes the container mounts volumes:
 # - /scripts
 # - /bedrock/data
 # - /java/data
