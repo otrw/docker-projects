@@ -19,6 +19,7 @@ If you find something useful here â€” great! If not, I'm still learning anyway ð
 | Project | Description |
 |---------|-------------|
 | [`minecraft-server`](./minecraft-server) | A Minecraft server stack using Docker with volume persistence and environment config support |
+| [`portainer`](./portainer) | A simple portainer server available at port 9000 |
 
 More to come as I build and learn.
 
@@ -26,14 +27,18 @@ More to come as I build and learn.
 
 ## How to Use
 
-Each subfolder contains a self-contained Docker project. To get started:
+Each subfolder contains a self-contained Docker project with a `README.md`
 
-1. **Pick a folder** (e.g. `minecraft-server`)
-2. **Copy the environment template**:
+For example, to get started with the `minecraft-server`:
+
+1. **Copy the environment template**:
    ```bash
    cp env.template .env
    ```
-3. **Create any required directory structure** (check projects `README.md`)
+2. **Create any required directory structure** 
+   ```bash
+   mkdir -p data/ config/
+   ```
 4. **Start the container**:
    ```bash
    docker compose up -d
