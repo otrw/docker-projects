@@ -1,6 +1,8 @@
-## Whoami container
+# Whoami
 
-Tiny Go webserver that prints OS information and HTTP request to output. 
+### What It Does
+Shows headers, source IP, and basic request info — useful when testing reverse proxies or port forwards.
 
-Small project to help develop familiarity with `docker-compose` configurations.
-
+### How I Use It
+- Spin it up temporarily to confirm routing behavior
+- Access via `http://<server-ip>:9999`
