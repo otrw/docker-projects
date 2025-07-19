@@ -1,6 +1,7 @@
 ## Portainer Setup Notes
 Portainer CE is included for visual Docker management.
 
+- Run it with `docker compose up -d`
 - First-time setup requires visiting the web UI at http://localhost:9000 (or server IP).
 - Port 9000 can be remapped in the `docker-compose.yml`
 - Create the initial Portainer admin account manually in the browser.
