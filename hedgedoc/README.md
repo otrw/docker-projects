@@ -1,4 +1,10 @@
-Basic HedgeDoc setup. Details from [here](https://docs.hedgedoc.org/setup/docker/)
+# HedgeDoc
 
-Use for simple scratch area.
-No multi Users, Guest mode only
+### What It Does
+Browser-based collaborative Markdown editor. Feels like “Obsidian Lite” with live sync.
+
+### How I Use It
+- Single Guest user
+- Write docs in Markdown with other devices
+- Test out formatting before pushing to Obsidian or GitHub
+- General scratch area for text

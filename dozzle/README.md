@@ -1,7 +1,9 @@
-## Dozzle Docker logs viewer
+# Dozzle
 
-> Like `docker logs -f` but pretty
+### What It Does
+Web-based viewer for container logs. Saves me from running `docker logs -f` manually.
 
-* Web UI at port `8888`
-* No config, just run and go
-* Helpful for seeing logs across all running containers
+### How I Use It
+- Fire it up with `docker compose up -d`
+- Access on `http://<server-ip>:8888`
+- Check logs across containers when troubleshooting
