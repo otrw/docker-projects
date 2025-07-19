@@ -20,6 +20,9 @@ If you find something useful here â€” great! If not, I'm still learning anyway ð
 |---------|-------------|
 | [`minecraft-server`](./minecraft-server) | A Minecraft server stack using Docker with volume persistence and environment config support |
 | [`portainer`](./portainer) | A simple portainer server available at port 9000 |
+| [`whoami`](./whoami) | Shows basic request info to confirm routing behaviour |
+| [`dozzle`](./dozzle) | Web-based viewer for container logs |
+| [`hedgedoc`](./hedgedoc) | Markdown editor for the browser |
 
 More to come as I build and learn.
 
