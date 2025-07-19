@@ -1,0 +1,11 @@
+services:
+  whoami:
+    image: traefik/whoami
+    restart: always
+    ports:
+      - "2001:80" # Expose port 80 of the container on port 2001 of the host
+    environment:
+      - TZ=Europe/London # Set your timezone
+# This whoami service uses the official Traefik whoami image.
+# It is intentionally configured to be a simple setup with the default port 2001.
+
