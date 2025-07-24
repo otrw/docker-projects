@@ -50,6 +50,7 @@ __inbox/
 
 # Docker volumes, configs and overrides
 docker-compose.override.yml  # Ignore local Docker Compose override files (developer-specific)
+**/backups/                  # Ignore 'backups' directory at any depth
 **/data/                     # Ignore any 'data' directory at any depth (used for Docker volumes or app data)
 **/.env                      # Ignore any .env files inside subdirectories (usually project-specific environment files)
 **/logs/                  # Ignore logs folders at any depth (often in Docker apps)
