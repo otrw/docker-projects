@@ -1,0 +1,39 @@
+[08:32:21] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[08:32:21] [ServerMain/INFO]: No existing world data, creating new world
+[08:32:21] [ServerMain/INFO]: Loaded 1407 recipes
+[08:32:21] [ServerMain/INFO]: Loaded 1520 advancements
+[08:32:21] [Server thread/INFO]: Starting minecraft server version 1.21.8
+[08:32:21] [Server thread/INFO]: Loading properties
+[08:32:21] [Server thread/INFO]: Default game type: SURVIVAL
+[08:32:21] [Server thread/INFO]: Generating keypair
+[08:32:22] [Server thread/INFO]: Starting Minecraft server on *:25565
+[08:32:22] [Server thread/INFO]: Using epoll channel type
+[08:32:22] [Server thread/INFO]: Preparing level "world"
+[08:32:24] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[08:32:24] [Worker-Main-8/INFO]: Preparing spawn area: 2%
+[08:32:24] [Worker-Main-6/INFO]: Preparing spawn area: 2%
+[08:32:25] [Worker-Main-4/INFO]: Preparing spawn area: 18%
+[08:32:25] [Worker-Main-9/INFO]: Preparing spawn area: 51%
+[08:32:25] [Server thread/INFO]: Time elapsed: 1718 ms
+[08:32:25] [Server thread/INFO]: Done (3.711s)! For help, type "help"
+[08:32:25] [Server thread/INFO]: Starting remote control listener
+[08:32:25] [Server thread/INFO]: Thread RCON Listener started
+[08:32:25] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[08:33:25] [Server thread/INFO]: Server empty for 60 seconds, pausing
+[08:57:59] [Server thread/WARN]: handleDisconnection() called twice
+[13:55:16] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2176ms or 43 ticks behind
+[14:29:51] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2182ms or 43 ticks behind
+[15:15:56] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[15:15:56] [Server thread/INFO]: [Rcon: Stopping the server]
+[15:15:56] [Server thread/INFO]: Stopping server
+[15:15:56] [RCON Client /0:0:0:0:0:0:0:1 #2/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[15:15:56] [Server thread/INFO]: Saving players
+[15:15:56] [Server thread/INFO]: Saving worlds
+[15:15:56] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[15:15:56] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[15:15:56] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[15:15:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[15:15:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[15:15:56] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[15:15:56] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[15:15:56] [Server thread/INFO]: Thread RCON Listener stopped
