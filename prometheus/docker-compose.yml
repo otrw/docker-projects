@@ -4,6 +4,3 @@ services:
     image: prom/prometheus
     ports:
       - "9090:9090"
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
-
