@@ -1,0 +1,20 @@
+[2025-08-02 07:50:08] === Starting Minecraft backup job ===
+[2025-08-02 07:50:08] Backing up Java world...
+[2025-08-02 07:50:11] Java world backup completed.
+[2025-08-02 07:50:11] Backing up Bedrock world...
+[2025-08-02 07:50:15] Bedrock world backup completed.
+[2025-08-02 07:50:15] Cleaning up backups older than 7 days...
+[2025-08-02 07:50:15] Old backups removed.
+[2025-08-02 07:50:15] === Backup job complete ===
+[2025-08-02 09:08:15] === Starting restore for bedrock world from bedrock_world_2025-08-02_07-50-08.tar.gz ===
+[2025-08-02 09:08:17] Restore completed for bedrock world
+[2025-08-02 09:08:18] Container mc-bedrock restarted
+[2025-08-02 09:08:18] === Restore process complete for bedrock world ===
+[2025-08-02 09:10:12] === Starting restore for bedrock world from bedrock_world_2025-08-02_07-50-08.tar.gz ===
+[2025-08-02 09:10:14] Restore completed for bedrock world
+[2025-08-02 09:10:15] Container mc-bedrock restarted
+[2025-08-02 09:10:15] === Restore process complete for bedrock world ===
+[2025-08-02 09:11:01] === Starting restore for bedrock world from bedrock_world_2025-08-02_07-50-08.tar.gz ===
+[2025-08-02 09:11:02] Restore completed for bedrock world
+[2025-08-02 09:11:03] Container mc-bedrock restarted
+[2025-08-02 09:11:03] === Restore process complete for bedrock world ===
