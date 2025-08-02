@@ -1,65 +1,57 @@
-#!/bin/sh
-# mcbackup.sh
-# Simple backup of both Java and Bedrock worlds
-#
+#!/bin/bash
 
-DATE=$(date +%Y%m%d_%H%M%S)
-SCRIPTDIR=$(dirname "$0")
-BACKUPDIR="$SCRIPTDIR/backups"
+# TODO Add a note in log file for [BACKUP]
 
-# Assumes the container mounts volumes:
-# - /scripts
-# - /bedrock/data
-# - /java/data
+set -e
 
-LOGFILE="$BACKUPDIR/backup.log"
+# ====== CONFIG ======
+BACKUP_DIR="/backups"
+LOG_FILE="$BACKUP_DIR/mcbackup.log"
+RETENTION_DAYS=7
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 
-BEDROCKDATA="/bedrock_data"
-JAVADATA="/java_data"
+# ====== Ensure backup directory exists ======
+mkdir -p "$BACKUP_DIR"
 
-# Create backup directory if it doesn't exist
-if [ ! -d "$BACKUPDIR" ]; then
-    mkdir -p "$BACKUPDIR"
+# ====== Rotate logs ======
+if [ -f "$LOG_FILE" ]; then
+    mv "$LOG_FILE" "$LOG_FILE.$TIMESTAMP"
+fi
+touch "$LOG_FILE"
+
+# ====== Logging helper ======
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"
+}
+
+log "=== Starting Minecraft backup job ==="
+
+# ====== Backup Java world ======
+if [ -d "/java_world" ]; then
+    log "Backing up Java world..."
+    tar --exclude='logs' \
+        --exclude='maintenance' \
+        -czf "$BACKUP_DIR/java_world_$TIMESTAMP.tar.gz" -C /java_world . \
+        && log "Java world backup completed."
 else
-    echo "Backup directory already exists: $BACKUPDIR"
+    log "Java world directory not found, skipping."
 fi
 
-# Backup both worlds
-
-# Java world
-if ! tar -czf "$BACKUPDIR/java_world_$DATE.tar.gz" -C "$JAVADATA" . ; then
-    echo "[$DATE] Failed to backup Java world." | tee -a "$LOGFILE"
-    exit 1
+# ====== Backup Bedrock world ======
+if [ -d "/bedrock_world" ]; then
+    log "Backing up Bedrock world..."
+    tar --exclude='logs' \
+        --exclude='maintenance' \
+        -czf "$BACKUP_DIR/bedrock_world_$TIMESTAMP.tar.gz" -C /bedrock_world . \
+        && log "Bedrock world backup completed."
 else
-    echo "[$DATE] Backed up Java world to $BACKUPDIR/java_world_$DATE.tar.gz" | tee -a "$LOGFILE"
+    log "Bedrock world directory not found, skipping."
 fi
 
-# Bedrock world
-if ! tar -czf "$BACKUPDIR/bedrock_world_$DATE.tar.gz" -C "$BEDROCKDATA" . ; then
-    echo "[$DATE] Failed to backup Bedrock world." | tee -a "$LOGFILE"
-    exit 1
-else
-    echo "[$DATE] Backed up Bedrock world to $BACKUPDIR/bedrock_world_$DATE.tar.gz" | tee -a "$LOGFILE"
-fi
+# ====== Cleanup old backups ======
+log "Cleaning up backups older than $RETENTION_DAYS days..."
+find "$BACKUP_DIR" -type f -name "*.tar.gz" -mtime +$RETENTION_DAYS -exec rm -f {} \;
+log "Old backups removed."
 
-echo "[$DATE] Backup Jobs Complete. See [$LOGFILE] for details."
+log "=== Backup job complete ==="
 
-# Maintenance: Clean up old backups
-# Retention policy: Keep the latest 7 backups for each world
-echo "[$DATE] Cleaning up old backups..." | tee -a "$LOGFILE"
-# Find and delete backups older than the latest 7 for each world
-#Java world
-find "$BACKUPDIR" -name "java_world_*.tar.gz" -type f | sort -r | tail -n +8 | xargs -r rm --
-# Bedrock world
-find "$BACKUPDIR" -name "bedrock_world_*.tar.gz" -type f | sort -r | tail -n +8 | xargs -r rm --
-echo "[$DATE] Old backups cleaned up. Retention policy applied." | tee -a "$LOGFILE"
-
-# Maintenance: Simple log rotation for backup.log
-# Limit log file size to 10MB, rotate if necessary
-MAX_SIZE=10485760  # 10 MB (10 × 1024 × 1024)
-
-if [ -f "$LOGFILE" ] && [ $(stat -c%s "$LOGFILE") -gt $MAX_SIZE ]; then
-    mv "$LOGFILE" "$LOGFILE.old"
-    touch "$LOGFILE"
-    echo "[$DATE] Log rotated (old saved as backup.log.old)" > "$LOGFILE"
-fi
