@@ -1,0 +1,12 @@
+services:
+  libation-server:
+    image: rmcrackan/libation:latest
+    volumes:
+      # Local config files, read-only
+      - ./config:/config:ro
+      # Named volumes for books.
+      - libation_books:/books
+    restart: unless-stopped
+
+volumes:
+  libation_books:
