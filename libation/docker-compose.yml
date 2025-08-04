@@ -1,19 +1,15 @@
 services:
   libation-server:
     container_name: libation-server
-    environment:
-      - LIBATION_BOOKS_DIR=${LIBATION_BOOKS_DIR}
-      - LIBATION_CONFIG_DIR=${LIBATION_CONFIG_DIR}
-      - LIBATION_DB_DIR=${LIBATION_CONFIG_DIR}
     image: rmcrackan/libation:latest
     volumes:
-      # Local config files, read-only
-      # Use config files from the Desktop install
-      - ./config:/config:ro
-      # Named volumes for books.
+      # Local config files (must be writable until RO re‑enabled)
+      - ./config:/config
+      # Named volume for downloaded books
       - libation_books:/books
+      # Local database directory
+      - ./libation_db:/db
     restart: unless-stopped
 
 volumes:
   libation_books:
-    name: libation_books

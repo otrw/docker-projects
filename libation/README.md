@@ -1,5 +1,7 @@
 ## Scope
 
+⚠️ Currently WIP — container will restart loop due to UID/permission issues. Will fix after testing 😅
+
 As of 2025, I have about 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
 
 Libation also provides an [official Docker image](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md) for running the service in a container.
