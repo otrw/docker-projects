@@ -1,7 +1,6 @@
-
 ## Scope
 
-As of 2025, I have approximately 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
+As of 2025, I have about 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
 
 Libation also provides an [official Docker image](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md) for running the service in a container.
 
@@ -27,27 +26,84 @@ These files contain settings such as:
 - Output formats
 - Other application preferences
 
-### Docker Compose Example
+These config files are sensitive and **must not** be committed to version control. They are included in `.gitignore` for safety.
 
-```yaml
-services:
-  libation-server:
-    image: rmcrackan/libation:latest
-    volumes:
-      # Local config files (read-only)
-      # Use config files from the Desktop install
-      - ./config:/config:ro
-      # Named volume for downloaded books
-      - libation_books:/books
-    restart: unless-stopped
 
-volumes:
-  libation_books:
+## Quick Start
+
+1. **Prepare your configuration files**
+
+   - Install and run the [Libation desktop app](https://github.com/rmcrackan/Libation/releases).
+   - Locate your `AccountSettings.json` and `Settings.json` (usually in your `$HOME` directory).
+   - Copy them into a local folder named `config` alongside your `docker-compose.yml`.
+
+2. **Create `docker-compose.yml`**
+   Save the following in the same directory as your `config` folder:
+
+   ```yaml
+   services:
+     libation-server:
+       image: rmcrackan/libation:latest
+       volumes:
+         # Local config files (read-only)
+         - ./config:/config:ro
+         # Named volume for downloaded books
+         - libation_books:/books
+       restart: unless-stopped
+
+   volumes:
+     libation_books:
+   ```
+
+3. **Launch the container**
+
+   ```bash
+   docker compose up -d
+   ```
+
+4. **Verify it’s working**
+
+   - Check the container logs:
+
+     ```bash
+     docker logs -f libation-server
+     ```
+
+     You should see it scanning your library and processing downloads.
+   - Once a download completes, list files inside the container:
+
+     ```bash
+     docker exec -it libation-server ls /books
+     ```
+
+     If you see audiobook files (`.m4b`), Libation is working correctly.
+
+5. **Find your downloads on the host**
+
+   - Files are stored in the `libation_books` named volume.
+   - To find the path on your host:
+
+     ```bash
+     docker volume inspect libation_books
+     ```
+
+
+## Run Without Docker Compose
+
+If you just want to launch Libation quickly without creating a `docker-compose.yml`:
+
+```bash
+docker run -d \
+  --name libation-server \
+  -v $(pwd)/config:/config:ro \
+  -v libation_books:/books \
+  --restart unless-stopped \
+  rmcrackan/libation:latest
 ```
 
-### Notes
+Check... :
 
-- The `./config` directory should contain your `AccountSettings.json` and `Settings.json` files from your desktop installation.
-- These sensitive files are **not committed to version control**. They are included in `.gitignore` to prevent accidental commits.
+- `$(pwd)/config` contains your `AccountSettings.json` and `Settings.json`.
+- You have already created the `config` folder in your current directory before running the command.
 
 ---
