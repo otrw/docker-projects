@@ -95,7 +95,7 @@ If you just want to launch Libation quickly without creating a `docker-compose.y
 ```bash
 docker run -d \
   --name libation-server \
-  -v $(pwd)/config:/config:ro \
+  -v $(pwd)/config:/config \
   -v libation_books:/books \
   --restart unless-stopped \
   rmcrackan/libation:latest
@@ -105,5 +105,10 @@ Check... :
 
 - `$(pwd)/config` contains your `AccountSettings.json` and `Settings.json`.
 - You have already created the `config` folder in your current directory before running the command.
+- The persmissions for writing to `./config` are set correctly should there be any issues with access:
+
+  ```bash
+  sudo chown -R 1001:1001 ./config
+  ```
 
 ---
