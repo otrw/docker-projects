@@ -4,7 +4,7 @@ services:
     volumes:
       # Local config files, read-only
       # Use config files from the Desktop install
-      - ./config:/config:ro
+      - ./config:/config
       # Named volumes for books.
       - libation_books:/books
     restart: unless-stopped
