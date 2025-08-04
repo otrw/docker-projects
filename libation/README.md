@@ -116,7 +116,7 @@ Check:
 ---
 
 **TODO**
-- Add `.db.` to `/config`.
+- Create project `.gitignore`.
 - Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
 - Add a database environemt variable.
 - Re-enable `:ro` for the config once all runtimes writes have been relocated
