@@ -4,12 +4,6 @@ As of 2025, I have about 175 Audible books. These can be downloaded directly fro
 
 Libation also provides an [official Docker image](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md) for running the service in a container.
 
-**TODO**:
-- Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
-- Add Database Directory
-- Add Database environment variable
-- Re-enable RO for the config
-
 ## Setup
 
 ### Account Settings
@@ -49,16 +43,18 @@ These config files are sensitive and **must not** be committed to version contro
    ```yaml
    services:
      libation-server:
+       container_name: libation-server
        image: rmcrackan/libation:latest
        volumes:
-         # Local config files (read-only)
-         - ./config:/config:ro
+         # Local config files (currently writable - amend to RO later)
+         - ./config:/config
          # Named volume for downloaded books
          - libation_books:/books
        restart: unless-stopped
 
    volumes:
      libation_books:
+       name: libation_books
    ```
 
 3. **Launch the container**
@@ -107,14 +103,18 @@ docker run -d \
   rmcrackan/libation:latest
 ```
 
-Check... :
-
+Check:
 - `$(pwd)/config` contains your `AccountSettings.json` and `Settings.json`.
-- You have already created the `config` folder in your current directory before running the command.
-- The persmissions for writing to `./config` are set correctly should there be any issues with access:
-
+- The `config` folder exists in your current directory before running the command.
+- File permissions allow container UID `1001` to write:
   ```bash
   sudo chown -R 1001:1001 ./config
   ```
 
 ---
+
+**TODO**
+- Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
+- Add a database directory mapping.
+- Add a database environemt variable.
+- Re-enable `:ro` for the config once all runtimes writes have been relocated
