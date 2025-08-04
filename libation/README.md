@@ -114,7 +114,7 @@ Check:
 ---
 
 **TODO**
+- Add `.db.` to `/config`.
 - Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
-- Add a database directory mapping.
 - Add a database environemt variable.
 - Re-enable `:ro` for the config once all runtimes writes have been relocated

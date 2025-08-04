@@ -4,7 +4,7 @@ services:
     environment:
       - LIBATION_BOOKS_DIR=${LIBATION_BOOKS_DIR}
       - LIBATION_CONFIG_DIR=${LIBATION_CONFIG_DIR}
-      - LIBATION_DB_DIR=${LIBATION_DB_DIR}
+      - LIBATION_DB_DIR=${LIBATION_CONFIG_DIR}
     image: rmcrackan/libation:latest
     volumes:
       # Local config files, read-only
