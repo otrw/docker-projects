@@ -4,6 +4,12 @@ As of 2025, I have about 175 Audible books. These can be downloaded directly fro
 
 Libation also provides an [official Docker image](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md) for running the service in a container.
 
+**TODO**:
+- Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
+- Add Database Directory
+- Add Database environment variable
+- Re-enable RO for the config
+
 ## Setup
 
 ### Account Settings
