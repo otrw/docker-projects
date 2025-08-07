@@ -1,0 +1,54 @@
+{
+  "Accounts": [
+    {
+      "AccountId": "leedavis5@icloud.com",
+      "AccountName": "leedavis5@icloud.com - uk",
+      "LibraryScan": true,
+      "DecryptKey": "",
+      "IdentityTokens": {
+        "LocaleName": "uk",
+        "ExistingAccessToken": {
+          "TokenValue": "Atna|EwICIFFqbBnSxLKP9Z_6HNIq4tU-YhByaWhBZYfq4FTkTa8rJXxmLwu_Iq_DguXnYN8Eycg8PxhePee0ZLLbf37uuHJ0obhiwaYA3zwCj3_CPg6fWil70U9ad6oAfBxp4jm69lRJWF7Su-OnIv_f8P1sWXIQYE98XaxEKb-tRP_GBnOsM_MB4AKnB6zOnFYM0Og-g-xkpoD-iTEq9hgGwe_RXb4DFK-RR6eg6nBPBzV9_PlH7tVBirGU4pey3yAX6w-Hijwgjx8s_7R850prhWjClMhaFkhXNgM_tJpzSj3MAMO6gpX5PJ6-2bbBJEfW2hsaieOiIAZOjrgKAnsHhoKsOAGYcngyGJubKIhHk2hNwxyKng",
+          "Expires": "2025-07-03T20:02:48.528657Z"
+        },
+        "PrivateKey": {
+          "Value": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpgIBAAKCAQEArQQmUW/I3TbRZ3p4q87AedMHWoNqWitgwdyErKfq/IEy0THx\nWvozxgyLb0CSh0+dX+Vja1xEQq545r770L/SagIS5fDcHNmNruhdQ6GIHp7Un4Y4\n6VGl3eI2ArBEYTKCUbf8XcOCPw0w91e/XqAWAB/BmgWTDF/stEWgogwsDCPylXP9\nMJr9lkygfDmpY4zoqW4WrxF6nlaHwDIGg6gF8oZIahxu8wsLpshm4R5cHPAdjRLp\nYX3PDYfqpn3F/T7HCf6UfzAfkxKxWxfS4cQR1J9bnI7hWimjhANIqy6h1nO/bUTS\ntvSoBfnxK0tdf4WpwVdXy9dJbsLpuHHyfu9JEQIDAQABAoIBAQCISp6MxEwsxsQK\nidWJMeM5lF1UlfUvdsBPtpDlGZnoszX+ySLhkfs65iLozqse4D6OjjrVFefHx30B\n+CyR8qmkTGHqtOQP7ejIgc8GObbquB+yUp9+XI0Wzt3RHF2hW5KBITgx/JMbbB7I\nmVztA5qRGnL+C6ocs2vZTogNXx1LqbFDm9B/FZaGcJqhX3PVXUvnBHwSDNpbuLiB\ny+/zrn+ElQfDWtIFSpxmDAMErFh7M6GJmYKc01MxnSI0IS4Rg6tGcpFrOMEyE/33\nbTEW8EBnhV4SO3KTx1Xg1UCFa81jFTVNNWI8j/dyc6TkbnODOhbR489INhp5l4s9\nnqvhDIPpAoGBAOHwDvuazLT9w1AcXFni9oHlUd+5MBezIhGwtDyqaU8TkqtFfdW5\nS/2nKDDTIKbIM3hgtmX2u0mT17u3H472PIOORQY+Wx1lqnt5GgsidElMHBWtjTQ/\nVEpPzQkzcaTXIiqMR3HfwV0IdqQfG3ewQSjlFwUMm32njkQMDfqVMuTfAoGBAMQJ\nd26u1kyA0W24bV2uJI/xH64vkNq6ojeCJSrGKVicGuUxECWbZAYNJrd5czwVBDnX\nFe34A87et0uKa8f1QgJf24OIkwP34u3f89cje0PMfQRrs5JuPWeGInc6+2y7tU9T\nUzT50kAUN/D2oTcTOWK4omvRfBuEJ0jAL60OqCAPAoGBALgBiFJFSj6FBRIzZssV\n2ukDWGC6M365tx9tJ/zYVJfAOw0dtVPgaxETl9nbuJXcKn75VNNJ1FIiA+qvQxZt\nV+9UaMai9hXE/Mk+YYV78/TV9XF6PKu2f/FdeIDr0rwLMZoxUOZe8t3PzL/xTa92\nbjreCJdmIyR815J3ttLDvAVFAoGBAKmNcoIFsA3tILYgXF85HiBtMbRrKYM1Btax\ntsm/KMWeBtkSTV/pfWKKf2ETJyrhFo2cTThMWabUFH6+kygYJWZ+WBL0zgsRnHGX\nUIRUCOoD9GEdcewFcxCWADtVhV5vH4sji4T3SfToR9YeyiMjem+7N6e/QPNfosaW\niuXIFnvbAoGBAJGf18Z9HXN9tveM7i9QMxq1Q33LwL9WvMrVif5fgnXmKUquxYCS\nnaMXI+CT2HGTPGPDqvFZzZFgHQt6E7NpCt6qj2nDBtFyqA0050q4fqyL6/NhfI4m\nZOON5/aJY6KFu8ualFgHw2D1sykk58f9Ru18TcjTO7O+go/BXSwAdqci\n-----END RSA PRIVATE KEY-----\n"
+        },
+        "AdpToken": {
+          "Value": "{enc:dNZmLU1Z43VnXvm1irZvjOXNZYNfcSUi8/eh3gesu2lJWmU31GvsBesKBepoBRK0Fp6FziZOulTi+elYM6d9eVKCn9eSKdBLwFkkFsXKNGcfoOjXyi3VJco88NiGZSWvTnZ37wTqNzsTfRix7Xh4mL2tVGP7PXy+2o4B+UYY+0yhG/bvXy7xPM8gtmINz1farJSO3YS4FBd4bU2f0ekgnaQ97/8OFHHBYMR7iv5KSWBEuKMX7dAtqx5/+K7o7GzYVk6n7E5bLXcRgb+DlKydJ4baL0TPaBJsNX/IzRbYbSd0DteOf/psBDJDx+xUHF0FNh6lQQ+2NOmPr3QP2doS2/7rlZhiufntmZFwYDceQliacYFCtA7G1VuCtByANlOCdPabfNKaLSbholgXqaD19EJNaYILPh6vJX9jSOJvs3YoKnMm3zDdXZFzqwErWnP1mGK51724f1pswhvKp0jlG9+4cT1INoAbK7wqrzjEUPWxRHErUR4tEdeyRCIZ9lwamxi16dcrK0QK6G1+sOnd6wzuic2THT3OmU3jVbGgFrtMaKkBw3/forHDe3lXnxiz9cKk5NpUivjBrEYLAOp0P2y6zSM2gw892v4CdMHgwXScvyudOhtGnC4wCa3fjkILoRn1KYdazEc2Tq4Pq7S2l5Bc2OfKSd8NezLHY2R9idjGadapJjK2zV3rLdDx/jm31Rk2GJ2Agzx9x26z3wPKtHwUfSAmg/3WdweTylaWz7l+K4xaP8NFwcVXT9d1pf+HjMCxcBZFw+KhunCJvGUNKgtq4nYcFiMmhXgK0eYSfSlyOYG40CSB81aZwlHtXIRUqsuaU8l2Gzd/VZjzLNrDeVU0imNsw1xHCGm8lgf/ge4+xXtpswltGffk8pKgGwwvISwym8+p03Bo2H853DMmD9FqrTABGE1HYNNChXi6joz2TlrcxDcKP/JpAZ7wdTvLa+KGCIbw9mwH5j8/05Zkd3jx0rC5fpRxVSpBnEeJg+Loam3ioIfpFlitUL0RqKmEzmjSDfDXt8b9uYn2YaOV+ENgouVysCoaRUcEAHsVSXMvRcHKMpxVemNtWU5apxld}{key:mnAHjrzbsUe3VkZcgU85W9Kvykq+b9Pec0fsBCZVNfhjx+gglwJAf5j50baPTMxERDa8zMtE8cK5aYcwRlfOI88uF7Ff0z6TsXZRGy+1rVok+DElTEUH7Um8dD1OLtv3JnsM+1m0+e0t3Al4bq/U7wq7ny9ZPj4uC6VVYQKZCCouabbtqIVx93lF9ZsSe9Afool5aoxH4uNh6j0IkT0rcxxhiC01C88g25jtIJuEQ/TdBsgsBWCN6nnjAmXJ210ofP116AmTMAa1G4lp7pB3NCmhy6b3lJsgj2rfAhAxg7PuClxkDniygMLZlZmoSqONWgnqs/8GqbYExVd5HdEShA==}{iv:SuQyjkYc953vymWXxtT+aA==}{name:QURQVG9rZW5FbmNyeXB0aW9uS2V5}{serial:Mg==}"
+        },
+        "RefreshToken": {
+          "Value": "Atnr|EwICIJo_C_p2UDx9ZbTHu5MndNxD6TjiF_9JhzG2wvaJm-dIe009heJLHic9C20R1bhAX4ajC_Pr-Cq2kWVQcGJiZ389w7Y6kp4orhqhhMK7M4iXTAqAczLdQr7HkDNsSRyGnrMtkIt1_JLg4JXmiXuk2Evs-RYhda1MRGuG7R6ZqaGtkHUMMOn_utKpu59IGwziHFzUdYOkPNGqKbnZlDCsJihn0-uH-PJb2ftbhBxA9O-2gUw51svTyA_-XbiLscgyc-nED8yeLwpNbok20-nXGwC6a5ubOYOalOWexhcOidnm-oZ_0QPgfF_UKC6gyOrAcQEWGv3PUlZit4MpWXdGWEHL"
+        },
+        "Cookies": [
+          {
+            "Key": "session-id",
+            "Value": "261-6945875-7617966"
+          },
+          {
+            "Key": "ubid-acbuk",
+            "Value": "260-4997408-6347702"
+          },
+          {
+            "Key": "x-acbuk",
+            "Value": "FLqtSwMlfs0ae3?iwu2Sk6NBCXsSPcWKGKZUyUwxlAXdBI5miyDlfveiMDTo1V6m"
+          },
+          {
+            "Key": "at-acbuk",
+            "Value": "Atza|IwEBINziZ5G_4Fk-vXoh6tfh3rgeaCK3ilS6I_A2hub7FBKSP4V5H1wqEvKaGMvjAAFoeI_PV0dETQsB9AXoBebVOuu4cnUtdMlxT3jkX29NFVmtWIP8crKos83J7u6iukfb7_wmRmXcGtNa5riw5MdEi2X5D4B0gth0mZpac9X4t33ztR9qU90-yxhY6Oi2XSFf-Pcfxb7SGahWeYNoHRpJn3R4QoxKFH9y55HWsydOv8g54kHiptGDzFtMKko2VrRFtXV-9uGJDoBO8fE3QfcLZaEZ9KlZMV5Ost54EmtonzZFfKmARy1uTu_aaD4Fn5azDzU"
+          },
+          {
+            "Key": "sess-at-acbuk",
+            "Value": "WcO06F3mr2jgQFFXc4mg8bVU/9KEuIuHdVP+/R1RHy8="
+          }
+        ],
+        "DeviceSerialNumber": "39BF6F4FCBA14B47A77C5B2D7660051A",
+        "DeviceType": "A2CZJZGLK2JJVM",
+        "AmazonAccountId": "amzn1.account.AGQPQECOEFOZNKUVC65IBAZJDE7Q",
+        "DeviceName": "Lee's Libation",
+        "StoreAuthenticationCookie": "ckQ2J/6ZOJGFrUaXUnEGwp6Jf9jeFHWm79K/dye8j/IRW4BI6oy3SQY6Z1Ccykn8Za/y+qCasjEuzSmEMMya7lvA78CipPXwEhYeJJLf+5hdVX4OdMztl0Ynhcja0iSi44txA8XcyhgPML+CfqF5H6VJYtVu1i0PSihnoLZXUb1nG3PPourFTw=="
+      },
+      "MaskedLogEntry": "AccountId=l[...]5@i[...]d.c[...]m|AccountName=l[...]5@i[...]d.c[...]k|Locale=uk"
+    }
+  ]
+}

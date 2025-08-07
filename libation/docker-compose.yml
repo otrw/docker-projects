@@ -1,15 +1,19 @@
 services:
   libation-server:
     container_name: libation-server
-    image: rmcrackan/libation:latest
+    image: rmcrackan/libation:latest 
     volumes:
-      # Local config files (must be writable until RO re‑enabled)
+      # Local config files, read-only
       - ./config:/config
-      # Named volume for downloaded books
-      - libation_books:/books
-      # Local database directory
-      - ./libation_db:/db
+      # Named volumes for books.
+      - libation_books:/data
     restart: unless-stopped
 
 volumes:
   libation_books:
+    name: libation_books
+
+
+# TODO: 
+    # Test without the db file.
+    # Test from scratch.

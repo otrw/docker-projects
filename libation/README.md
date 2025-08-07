@@ -1,6 +1,6 @@
 ## Scope
 
-⚠️ Currently WIP — container will restart loop due to UID/permission issues. Will fix after testing 😅
+⚠️ Currently a WIP
 
 As of 2025, I have about 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
 
@@ -13,34 +13,33 @@ Libation also provides an [official Docker image](https://github.com/rmcrackan/L
 Libation’s client configuration is stored in two files:
 
 - `AccountSettings.json`
+    - This file contains the user credentials for connecting to your Audible account. This file is required.
 - `Settings.json`
+    - This files contains application preferences and settings i.e. download options, output format etc. This file is optional and not required, mentioned here purely as a remonder that it exists.
 
 These files are created when you first run the desktop application, usually in the user’s `$HOME` directory.
 
 From the Libation documentation:
-
 > The easiest way to configure these is to run the desktop version of Libation and then copy them into a folder, such as `/opt/libation/config`, that you'll volume mount into the image.
 
-These files contain settings such as:
-
-- User credentials
-- Download configuration
-- Output formats
-- Other application preferences
-
-These config files are sensitive and **must not** be committed to version control. They are included in `.gitignore` for safety.
-
+**IMPORTANT** These config files are sensitive and **must not** be committed to version control. They are included in `.gitignore` for safety.
 
 ## Quick Start
 
-1. **Prepare your configuration files**
+1. **Create you local project directories**
+
+```bash
+mkdir -p libation-docker/config
+```
+
+2. **Prepare your configuration files**
 
    - Install and run the [Libation desktop app](https://github.com/rmcrackan/Libation/releases).
-   - Locate your `AccountSettings.json` and `Settings.json` (usually in your `$HOME` directory).
-   - Copy them into a local folder named `config` alongside your `docker-compose.yml`.
+   - Locate your `AccountSettings.json` (usually in your `$HOME` directory).
+   - Copy them into a local directory named `config`.
 
-2. **Create `docker-compose.yml`**
-   Save the following in the same directory as your `config` folder:
+3. **Create `docker-compose.yml`**
+  Create the following and save to `/libation-docker/docker-compose.yml`
 
    ```yaml
    services:
@@ -48,7 +47,7 @@ These config files are sensitive and **must not** be committed to version contro
        container_name: libation-server
        image: rmcrackan/libation:latest
        volumes:
-         # Local config files (currently writable - amend to RO later)
+         # Local configuration files
          - ./config:/config
          # Named volume for downloaded books
          - libation_books:/books
@@ -59,13 +58,13 @@ These config files are sensitive and **must not** be committed to version contro
        name: libation_books
    ```
 
-3. **Launch the container**
+4. **Launch the container**
 
    ```bash
-   docker compose up -d
+   cd libation-docker/ && docker compose up -d
    ```
 
-4. **Verify it’s working**
+5. **Verify it’s working**
 
    - Check the container logs:
 
@@ -82,7 +81,7 @@ These config files are sensitive and **must not** be committed to version contro
 
      If you see audiobook files (`.m4b`), Libation is working correctly.
 
-5. **Find your downloads on the host**
+6. **Find your downloads on the host**
 
    - Files are stored in the `libation_books` named volume.
    - To find the path on your host:
@@ -106,7 +105,7 @@ docker run -d \
 ```
 
 Check:
-- `$(pwd)/config` contains your `AccountSettings.json` and `Settings.json`.
+- `$(pwd)/config` contains your atleast your `AccountSettings.json`.
 - The `config` folder exists in your current directory before running the command.
 - File permissions allow container UID `1001` to write:
   ```bash
@@ -119,4 +118,3 @@ Check:
 - Create project `.gitignore`.
 - Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
 - Add a database environemt variable.
-- Re-enable `:ro` for the config once all runtimes writes have been relocated
