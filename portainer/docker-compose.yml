@@ -4,12 +4,13 @@ services:
     container_name: portainer
     restart: always # Ensures the container restarts automatically
     ports:
-      - "9000:9000" # Change to 8080 or any available port on your host
+      - "9000:9000" # Change host port if needed to avoid conflicts
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock # Allows Portainer to manage Docker
       - ./data:/data # uses a local directory for persistent data
     environment:
       - TZ=Europe/London # Set your timezone
-# This portainer service uses the official Portainer CE image.
-# It is intentionally configured to be a simple setup with the default port 9000.
-# Useful as a simple docker-compose template.
+# Notes:
+# - Uses Portainer CE image.
+# - Simple default configuration on port 9000.
+# - Local ./data directory stores persistent data.
