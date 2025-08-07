@@ -1,6 +1,6 @@
 # Dozzle
 
-## What It Does
+## What it does
 Web-based viewer for container logs. Saves me from running `docker logs -f` manually and allows me to have a more graphical view when attempting to understand a process or concept.
 
 ## How to use it
