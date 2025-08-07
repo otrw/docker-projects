@@ -1,15 +1,21 @@
 # HedgeDoc
 
-### What It Does
-Browser-based collaborative Markdown editor. Feels like “Obsidian Lite” with live sync.
+## What it does
+Browser-based collaborative Markdown editor. Feels like “Obsidian Lite” with live sync. I currently use this in the single guest mode only and have not attempted to set any users. Often used as a simple scratch pad.
 
-### How I Use It
-- Create the `.env` file: `cp env.template .env`
-- Edit `.env` and upadate your configuration
-- Run it with `docker compose up -d`
+## How to use it
+1. Create the `.env` file from the provided template:
+```bash
+cp env.template .env
+```
+2. Edit `.env` to configure your instance.
+3. Start the service with:
+```bash
+docker compose up -d
+```
+4. Open you browser and go to: http://your-server-ip:3000
+5. Click "New Guest Note" to start writing.
 
-### **More Info**
-- Single Guest user
-- Write docs in Markdown with other devices
-- Test out formatting before pushing to Obsidian or GitHub
-- General scratch area for text
+## References
+- [HedgeDoc Website](https://hedgedoc.org/releases/)
+- [HedgeDoc Github](https://github.com/hedgedoc)
