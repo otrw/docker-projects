@@ -1,3 +1,7 @@
+# This docker-compose file is used to set up the Libation server
+# It includes a named volume for books and mounts local configuration files
+# Ensure to keep the config files up-to-date for proper server operation
+
 services:
   libation-server:
     container_name: libation-server
@@ -12,8 +16,3 @@ services:
 volumes:
   libation_books:
     name: libation_books
-
-
-# TODO: 
-    # Test without the db file.
-    # Test from scratch.
