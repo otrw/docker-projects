@@ -1,3 +1,4 @@
+# Simple Docker Compose file for Dozzle
 services:
   dozzle:
     container_name: dozzle
@@ -5,4 +6,5 @@ services:
     ports:
       - "8888:8080"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
