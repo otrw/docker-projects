@@ -1,9 +1,15 @@
 # Whoami
 
-### What It Does
-Shows headers, source IP, and basic request info — useful when testing reverse proxies or port forwards.
+## What it does
+A minimal service that returns request information, useful when testing reverse proxies, headers and port forwards. Accessible from any network device.
 
-### How I Use It
-- Run it with `docker compose up -d`
-- Spin it up temporarily to confirm routing behavior
-- Access via `http://<server-ip>:9999`
+## How to use it
+1. Run with:
+```bash
+ docker compose up -d
+```
+2. Open you browser and visit: http://your-server-ip:2001
+
+## References
+- [traefik/whoami on Github](https://github.com/traefik/whoami)
+- [traefik/whoami on Docker Hub](https://hub.docker.com/r/traefik/whoami)
