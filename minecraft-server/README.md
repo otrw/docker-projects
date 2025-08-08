@@ -1,72 +1,56 @@
-# Minecraft Server (Docker)
+# Minecraft Server
 
-This setup runs both Java and Bedrock Minecraft servers in Docker, along with an optional admin container for scripts and utilities.
+## TODO
+- Refactor admin script into `bash` functions for better readability & maintenance.
+- Create a dedicated `Dockerfile` for the project.
 
----
+## What it does
+Runs both Java and Bedrock Minecraft servers in Docker, along with a small admin container for scripts and utilities.
 
-## What this includes
+## How to use it
 
-- `itzg/minecraft-server` for Java Edition
-- `itzg/minecraft-bedrock-server` for Bedrock Edition
-- A minimal Alpine-based admin container for maintenance tasks
-- Volume persistence for world data
-- Basic Backup & Management scripts
-
----
-
-## Setup Instructions
-
-### 1. Copy the environment file
+### 1. Copy and create the Environment File
 
 ```bash
 cp env.template .env
 ```
-Edit `.env` and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc.).
 
----
-
-### 2. Create the directory structure
+### 2. Create the required directories
 ```bash
-mkdir -p java/data bedrock/data scripts
+mkdir -p java/data bedrock/data scripts backups
 ```
-The scripts folder is optional and used only by the admin container.
+**Note** The `scripts` and `backups` directories are used by the admin container.
 
----
+## 3. Set directory permissions (if needed)
 
-### 3. Set directory permissions
+By default, the Minecraft data directories should come with the correct permissions required. If not, this can be changed using:
 ```bash
 # Give full access to the container (which runs as root)
 sudo chown -R root:root java/data bedrock/data
 
 # Provide read/execute access to others
 sudo chmod -R 755 java/data bedrock/data
-```
 
-To confirm which user a container is running as:
-```bash
-docker exec -it mcj-server id
+# Check directory permissions
+ls -l
+docker exec -it <server-name> id
 ```
-
----
 
 ### 4. Start the containers
 ```bash
 docker compose up -d
 ```
 
-### 5. Admin Container
+## Admin Container
 
-**Note:** A simple cron job will be set when the container is initialized to backup on a 12 hour rotation.
+This container starts automatically and includes a simple backup job via `crontab` every 12 hours.
 
-This container can be used to run scripts to for various admin tasks.
+To run a command in the server:
+
 ```bash
-# Backup the Minecraft worlds using mcbackup.sh
+# Backup Minecraft worlds and clean logs/old backups
 docker exec mc-admin-server sh /scripts/mcbackup.sh
-# This job will also cleanup log files and previous backups
-
 ```
-
----
 
 ## Project Structure
 ```plaintext
@@ -77,13 +61,19 @@ minecraft-server/
 │   └── data/
 ├── bedrock/
 │   └── data/
-├── scripts/              # Optional
+├── scripts/
+├── backups/
 └── README.md
 ```
 
----
+### Includes:
+- itzg/minecraft-server (Java Edition)
+- itzg/minecraft-bedrock-server (Bedrock Edition)
+- Minimal Alpine-based admin container for maintenance
+- Persistent volumes for world data
+- Basic backup & management scripts
 
 ## Notes
-- World data is stored in `java/data` and `bedrock/data`, both excluded from version control.
-- The admin container does not run a Minecraft server — it's intended for running scripts or inspecting data volumes.
-- This project is part of a broader learning process and may evolve or change over time.
+- World data is stored in `java/data` and `bedrock/data` (both excluded from version control).
+- The admin container does **not** run a Minecraft server — it handles scripts and volume inspection.
+- This project is part of a broader learning process and may evolve over time.
