@@ -1,6 +1,10 @@
+**Work In Progress**  
+**TODO**:
+ - Amend layout to format as others.
+ - Add `Settings.json` options to change download descriptions.
+ - Current inclusion of `Settings.json` not required to run.
+ 
 ## Scope
-
-⚠️ Currently a WIP
 
 As of 2025, I have about 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
 
@@ -15,7 +19,7 @@ Libation’s client configuration is stored in two files:
 - `AccountSettings.json`
     - This file contains the user credentials for connecting to your Audible account. This file is required.
 - `Settings.json`
-    - This files contains application preferences and settings i.e. download options, output format etc. This file is optional and not required, mentioned here purely as a remonder that it exists.
+    - This files contains application preferences and settings i.e. download options, output format etc. This file is optional and not required.
 
 These files are created when you first run the desktop application, usually in the user’s `$HOME` directory.
 
@@ -36,7 +40,7 @@ mkdir -p libation-docker/config
 
    - Install and run the [Libation desktop app](https://github.com/rmcrackan/Libation/releases).
    - Locate your `AccountSettings.json` (usually in your `$HOME` directory).
-   - Copy them into a local directory named `config`.
+   - Copy them into the local directory `config`.
 
 3. **Create `docker-compose.yml`**
   Create the following and save to `/libation-docker/docker-compose.yml`
@@ -50,13 +54,14 @@ mkdir -p libation-docker/config
          # Local configuration files
          - ./config:/config
          # Named volume for downloaded books
-         - libation_books:/books
+         - libation_books:/data
        restart: unless-stopped
 
    volumes:
      libation_books:
        name: libation_books
    ```
+**Note** You can also use the `.env` file to specifiy specific directories for confirguration files like the database. By default, if this is not set, Libation will just use the `config` directory.
 
 4. **Launch the container**
 
@@ -110,11 +115,3 @@ Check:
 - File permissions allow container UID `1001` to write:
   ```bash
   sudo chown -R 1001:1001 ./config
-  ```
-
----
-
-**TODO**
-- Create project `.gitignore`.
-- Replace `Settings.json` with the **LIBATION_BOOKS_DIR** environment variable.
-- Add a database environemt variable.
