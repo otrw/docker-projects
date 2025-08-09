@@ -8,11 +8,12 @@ services:
     ports:
       - "25565:25565" # Default port for Java Minecraft server
     environment:
-      EULA: "${EULA}"
-      MEMORY: "${MEMORY}"
+      # EULA and memory settings can be set in a .env file or directly here
+      EULA: "${EULA:-true}" # Default to true if not set
+      MEMORY: "${MEMORY:-2G}" # Default to 2G if not set
     volumes:
-      - java_world:/data
-      - ./scripts:/scripts
+      - java_world:/data # Persistent volume for Java server data
+      - ./scripts:/scripts # Shared scripts directory
     restart: unless-stopped
 
   mc-bedrock:
@@ -21,11 +22,12 @@ services:
     ports:
       - "19132:19132/udp" # Default port for Bedrock Minecraft server
     environment:
-      EULA: "${EULA}"
-      MEMORY: "${MEMORY}"
+      # EULA and memory settings can be set in a .env file or directly here
+      EULA: "${EULA:-true}" # Default to true if not set
+      MEMORY: "${MEMORY:-2G}" # Default to 2G if not set
     volumes:
-      - bedrock_world:/data
-      - ./scripts:/scripts
+      - bedrock_world:/data  # Persistent volume for Bedrock server data
+      - ./scripts:/scripts # Shared scripts directory
     restart: unless-stopped
 
   mc-admin:
