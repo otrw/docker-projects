@@ -1,0 +1,48 @@
+# Minecraft Server Docker Compose Configuration
+# Runs Java and Bedrock Minecraft servers plus an admin container for backups and maintenance.
+# Uses custom images for each server type, with persistent named volumes and shared scripts.
+services:
+  mc-java:
+    image: mc-java-custom:1.1 # Custom image for Java server. Can use .env file for configuration.
+    container_name: mc-java
+    ports:
+      - "25565:25565" # Default port for Java Minecraft server
+    environment:
+      # EULA and memory settings can be set in a .env file or directly here
+      EULA: "${EULA:-true}" # Default to true if not set
+      MEMORY: "${MEMORY:-2G}" # Default to 2G if not set
+    volumes:
+      - java_world:/data # Persistent volume for Java server data
+      - ./scripts:/scripts # Shared scripts directory
+    restart: unless-stopped
+
+  mc-bedrock:
+    image: mc-bedrock-custom:1.1 # Custom image for Bedrock server. Can use .env file for configuration.
+    container_name: mc-bedrock
+    ports:
+      - "19132:19132/udp" # Default port for Bedrock Minecraft server
+    environment:
+      # EULA and memory settings can be set in a .env file or directly here
+      EULA: "${EULA:-true}" # Default to true if not set
+      MEMORY: "${MEMORY:-2G}" # Default to 2G if not set
+    volumes:
+      - bedrock_world:/data  # Persistent volume for Bedrock server data
+      - ./scripts:/scripts # Shared scripts directory
+    restart: unless-stopped
+
+  mc-admin:
+    image: mc-admin-custom:1.3 # Admin container for maintenace scripts
+    container_name: mc-admin
+    stdin_open: true
+    tty: true
+    volumes:
+      - java_world:/java_world
+      - bedrock_world:/bedrock_world
+      - ./scripts:/shared-scripts
+      - ./backups:/backups
+    restart: unless-stopped
+
+volumes:
+  java_world:
+  bedrock_world:
+
