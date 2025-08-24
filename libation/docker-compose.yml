@@ -1,0 +1,19 @@
+# This docker-compose file is used to set up the Libation server
+# It includes a named volume for books and mounts local configuration files
+
+services:
+  libation-server:
+    container_name: libation-server
+    image: rmcrackan/libation:latest 
+    volumes:
+      # Local config directory for AccountSettings.json
+      - ./config:${LIBATION_CONFIG_DIR}
+      # Local `db` directory
+      - ./db:${LIBATION_DB_DIR}
+      # Named volumes for books.
+      - libation_books:${LIBATION_BOOKS_DIR}
+    restart: unless-stopped
+
+volumes:
+  libation_books:
+    name: libation_books
