@@ -1,14 +1,3 @@
-**Work In Progress** 
-
-**TODO**
- - Amend README layout
- - Confirm `Settings.json` options to change download descriptions  
- **NOTE**: This is a personal setting mainly to define the naming convention and format of downloaded books snd series.
-- Add backup script to move content from Docker volume to external server disk.
-
-
----
-
 # Project Scope
 
 As of 2025, I have about 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
@@ -24,9 +13,7 @@ Libation’s client configuration is stored in two files:
 - `AccountSettings.json`
     - This file contains the user credentials for connecting to your Audible account. This file is required.
 - `Settings.json`
-    - This files contains application preferences and settings i.e. download options, output format etc. This file is optional and not required.
-
-These files are created when you first run the desktop application, usually in the user’s `$HOME` directory.
+    - This file can be skipped and is no longer required.
 
 From the Libation documentation:
 > The easiest way to configure these is to run the desktop version of Libation and then copy them into a folder, such as `/opt/libation/config`, that you'll volume mount into the image.
@@ -66,7 +53,7 @@ mkdir -p libation-docker/config
      libation_books:
        name: libation_books
    ```
-**Note** You can also use the `.env` file to specifiy specific directories for confirguration files like the database. By default, if this is not set, Libation will just use the `config` directory.
+**Note** You can also use the `.env` file to specifiy specific directories for confirguration files like the database. By default, if this is not set, Libation will just use the `config` directory. For an up-to-date version of the `docker-compose.yml`, see the ./docker-compose.yml
 
 4. **Launch the container**
 
