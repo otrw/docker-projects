@@ -5,6 +5,9 @@ services:
   libation-server:
     container_name: libation-server
     image: rmcrackan/libation:latest 
+    environment:
+      - SLEEP_TIME=${SLEEP_TIME}
+      - LIBATION_CREATE_DB=${LIBATION_CREATE_DB}
     volumes:
       # Local config directory for AccountSettings.json
       - ./config:${LIBATION_CONFIG_DIR}
