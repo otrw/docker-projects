@@ -1,15 +1,17 @@
-# This docker-compose file is used to set up the Libation server
-# It includes a named volume for books and mounts local configuration files
+# This docker-compose file is used to set up a Libation server container
+# Includes a named volume for books and mounts local configuration files from /config
+
+# Is DOES NOT include the AccountsSettings.json file, which needs to be provided and saved in /config
 
 services:
   libation-server:
     container_name: libation-server
     image: rmcrackan/libation:latest 
-    environment:
-      - SLEEP_TIME=${SLEEP_TIME}
+    environment: # Environment variables for Libation configuration - see .env file for details
+      - SLEEP_TIME=${SLEEP_TIME:-720} # Default to 720 mins if not set
       - LIBATION_CREATE_DB=${LIBATION_CREATE_DB}
     volumes:
-      # Local config directory for AccountSettings.json
+      # Local config directory for AccountsSettings.json
       - ./config:${LIBATION_CONFIG_DIR}
       # Local `db` directory
       - ./db:${LIBATION_DB_DIR}
