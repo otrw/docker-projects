@@ -8,7 +8,7 @@ services:
     container_name: libation-server
     image: rmcrackan/libation:latest 
     environment: # Environment variables for Libation configuration - see .env file for details
-      - SLEEP_TIME=${SLEEP_TIME:-720} # Default to 720 mins if not set
+      - SLEEP_TIME=${SLEEP_TIME:-720m} # Default to 720 mins if not set
       - LIBATION_CREATE_DB=${LIBATION_CREATE_DB}
     volumes:
       # Local config directory for AccountsSettings.json
