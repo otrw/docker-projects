@@ -22,20 +22,33 @@ From the Libation documentation:
 
 ## Quick Start
 
-1. **Create you local project directories**
+1. **Create and prepare local project directories**
 
 ```bash
-mkdir -p libation-docker/config
+# create the project and config directories
+mkdir -p libation-docker/config && cd libation-docker
+
+# amend the ownership of the config directory
+sudo chown -R 1001:1001 ./config
+
 ```
 
 2. **Prepare your configuration files**
 
    - Install and run the [Libation desktop app](https://github.com/rmcrackan/Libation/releases).
-   - Locate your `AccountSettings.json` (usually in your `$HOME` directory).
-   - Copy them into the local directory `config`.
+   - Locate your `AccountSettings.json` (usually in your `$HOME/Libation` directory).
+   - Copy to the `config` directory on the docker host.
 
 3. **Create `docker-compose.yml`**
-  Create the following and save to `/libation-docker/docker-compose.yml`
+
+ ```bash
+ # create a docker-compose.yml in the project directory
+
+ touch libation-docker/docker-compose.yml
+ ```
+
+
+Use the following to create the server
 
    ```yaml
    services:
@@ -53,40 +66,37 @@ mkdir -p libation-docker/config
      libation_books:
        name: libation_books
    ```
-**Note** You can also use the `.env` file to specifiy specific directories for confirguration files like the database. By default, if this is not set, Libation will just use the `config` directory. For an up-to-date version of the `docker-compose.yml`, see the ./docker-compose.yml
+**Note** You can also use the `.env` file to specifiy specific directories for confirguration files like the database. By default, if this is not set, Libation will just use the `config` directory. More info can be found [here](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md)
 
 4. **Launch the container**
 
-   ```bash
-   cd libation-docker/ && docker compose up -d
-   ```
+  ```bash
+docker compose up -d
+  ```
 
 5. **Verify it’s working**
 
-   - Check the container logs:
 
-     ```bash
-     docker logs -f libation-server
-     ```
+```bash
+# Check the container logs:
+docker logs -f libation-server
 
-     You should see it scanning your library and processing downloads.
-   - Once a download completes, list files inside the container:
+# Verify files in the container
+docker exec -it libation-server ls /data
 
-     ```bash
-     docker exec -it libation-server ls /books
-     ```
-
-     If you see audiobook files (`.m4b`), Libation is working correctly.
+```
 
 6. **Find your downloads on the host**
 
-   - Files are stored in the `libation_books` named volume.
-   - To find the path on your host:
+The default path for Docker Volumes is: `/var/lib/docker/volumes/`, to find the exact path on the host, use the command:
 
-     ```bash
-     docker volume inspect libation_books
-     ```
+```bash
+# find the exact volume path
+docker volume inspect libation_books
 
+# inspect the path using ls
+sudo ls /var/lib/docker/volumes/libation_books/_data
+```
 
 ## Run Without Docker Compose
 
@@ -100,10 +110,10 @@ docker run -d \
   --restart unless-stopped \
   rmcrackan/libation:latest
 ```
+---
 
-Check:
+Checks:
 - `$(pwd)/config` contains your atleast your `AccountSettings.json`.
 - The `config` folder exists in your current directory before running the command.
-- File permissions allow container UID `1001` to write:
-  ```bash
-  sudo chown -R 1001:1001 ./config
+- File permissions allow container UID `1001` to write to `config`.
+
