@@ -1,0 +1,18 @@
+# Basic Docker Compose file for Portainer Community Edition - a lightweight management UI for Docker
+# Docker Hub: https://hub.docker.com/r/portainer/portainer-ce
+# Official Website: https://www.portainer.io/
+services:
+  portainer-server:
+    image: portainer/portainer-ce:lts
+    container_name: portainer
+    restart: always
+    # Portainer UI defaults to HTTPS on 9443; 8000 is for the older agent
+    ports: 
+      - "8000:8000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Allow Portainer to communicate directly with the Docker daemon 
+      - portainer_data:/data
+
+volumes:
+  portainer_data:
