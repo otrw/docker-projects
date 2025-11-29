@@ -13,8 +13,6 @@ services:
     volumes:
       # Local config directory for AccountsSettings.json
       - ./config:${LIBATION_CONFIG_DIR}
-      # Local `db` directory
-      - ./db:${LIBATION_DB_DIR}
       # Named volumes for books.
       - libation_books:${LIBATION_BOOKS_DIR}
     restart: unless-stopped

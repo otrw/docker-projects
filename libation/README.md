@@ -1,8 +1,6 @@
 # Project Scope
 
-As of 2025, I have about 175 Audible books. These can be downloaded directly from Audible or by using a great tool called [Libation](https://github.com/rmcrackan/Libation).
-
-Libation also provides an [official Docker image](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md) for running the service in a container.
+I have about 180 Audible books and I'd like the ability to have access to them offline if required. Audible offers users the ability to download your purchased books and the Libation project is a great way to achieve this. Libation will install as an application (and is recommended to do so), but they also offer a docker image too. See the [Libation Documentation](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md) for further information.
 
 ## Setup
 
@@ -26,7 +24,7 @@ From the Libation documentation:
 
 ```bash
 # create the project and config directories
-mkdir -p libation-docker/config && cd libation-docker
+mkdir -p ~/docker/libation/config && cd ~/docker/libation
 
 # amend the ownership of the config directory
 sudo chown -R 1001:1001 ./config
@@ -39,12 +37,22 @@ sudo chown -R 1001:1001 ./config
    - Locate your `AccountSettings.json` (usually in your `$HOME/Libation` directory).
    - Copy to the `config` directory on the docker host.
 
+```bash
+# Copy the AccountSettings to the your home directory on the docker host; Move it in the next step.
+scp "$HOME/Libation/AccountSettings.json" <user>@<serverIP>:/home/<username>/
+```
+```bash
+# On the docker host server, copy or move the AccountSettings.json
+sudo mv "/home/<username>/AccountSettings.json" "$HOME/docker/libation/config/"
+```
+
+
 3. **Create `docker-compose.yml`**
 
  ```bash
  # create a docker-compose.yml in the project directory
 
- touch libation-docker/docker-compose.yml
+ touch docker-compose.yml
  ```
 
 
@@ -66,7 +74,7 @@ Use the following to create the server
      libation_books:
        name: libation_books
    ```
-**Note** You can also use the `.env` file to specifiy specific directories for confirguration files like the database. By default, if this is not set, Libation will just use the `config` directory. More info can be found [here](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md)
+**Note** You can also use the `.env` file to specify specific directories for configuration files like the database. By default, if this is not set, Libation will just use the `config` directory. More info can be found [here](https://github.com/rmcrackan/Libation/blob/master/Documentation/Docker.md)
 
 4. **Launch the container**
 
@@ -113,7 +121,7 @@ docker run -d \
 ---
 
 Checks:
-- `$(pwd)/config` contains your atleast your `AccountSettings.json`.
+- `$(pwd)/config` contain at least your `AccountSettings.json`.
 - The `config` folder exists in your current directory before running the command.
 - File permissions allow container UID `1001` to write to `config`.
 
