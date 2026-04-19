@@ -1,0 +1,30 @@
+# Secrets / environment
+.env
+.env.*
+
+# Keys / certificates
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
+# Editor / OS clutter
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated runtime data
+**/backups/                     # Ignore 'backups' directory at any depth
+**/data/                        # Ignore any 'data' directory at any depth
+**/logs/                        # Ignore logs folders at any depth
+**/config/                      # Ignore any 'config' directory at any depth
+
+# Local development files
+.docker/                        # Some repos use this for docker config/scripts
+
+# Binaries
+*.jar

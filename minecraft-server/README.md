@@ -1,16 +1,14 @@
-# Minecraft Server (Docker)
+# Minecraft Bedrock Server (Docker)
 
-This setup runs both Java and Bedrock Minecraft servers in Docker, along with an optional admin container for scripts and utilities.
+This setup runs a Minecraft Bedrock Edition server.
 
 ---
 
 ## What this includes
 
-- `itzg/minecraft-server` for Java Edition
 - `itzg/minecraft-bedrock-server` for Bedrock Edition
-- A minimal Alpine-based admin container for maintenance tasks
-- Volume persistence for world data
-- Basic Backup & Management scripts
+- Persistence for world data
+- Basic backup
 
 ---
 
@@ -21,69 +19,78 @@ This setup runs both Java and Bedrock Minecraft servers in Docker, along with an
 ```bash
 cp env.template .env
 ```
-Edit `.env` and fill in your desired values (e.g., EULA, MEMORY, DIFFICULTY, etc.).
+Edit `.env` and fill in your desired values
 
 ---
 
 ### 2. Create the directory structure
 ```bash
-mkdir -p java/data bedrock/data scripts
+mkdir -p bedrock/data
 ```
-The scripts folder is optional and used only by the admin container.
 
 ---
 
 ### 3. Set directory permissions
+
 ```bash
 # Give full access to the container (which runs as root)
-sudo chown -R root:root java/data bedrock/data
+sudo chown -R root:root bedrock/data
 
-# Provide read/execute access to others
-sudo chmod -R 755 java/data bedrock/data
+# Optional: If permission issues occur, provide read/execute access to others
+sudo chmod -R 755 bedrock/data
 ```
 
 To confirm which user a container is running as:
 ```bash
-docker exec -it mcj-server id
+docker exec -it mcb-server id
 ```
 
 ---
 
-### 4. Start the containers
+### 4. Start the container
 ```bash
 docker compose up -d
 ```
 
-### 5. Admin Container
+---
 
-**Note:** A simple cron job will be set when the container is initialized to backup on a 12 hour rotation.
+### 5. Backups & Restore
 
-This container can be used to run scripts to for various admin tasks.
+Create a backup of the persistent data directory. 
+>Stop the server first for the cleanest backup.
+
 ```bash
-# Backup the Minecraft worlds using mcbackup.sh
-docker exec mc-admin-server sh /scripts/mcbackup.sh
-# This job will also cleanup log files and previous backups
+# Create a backup folder
+mkdir -p backups
 
+# Create an archive of the data directory.
+tar -czf backups/bedrock-$(date +%F-%H%M).tar.gz bedrock/data
 ```
+This can be run manually or scheduled via cron.
+
+To restore:
+
+```bash
+# Replace the date with the appropriate name
+tar -xzf backups/bedrock-2026-04-19-1430.tar.gz -C .
+```
+>Restore will replace any existing data.
 
 ---
 
 ## Project Structure
 ```plaintext
 minecraft-server/
-├── docker-compose.yml
+├── compose.yml
 ├── env.template
-├── java/
-│   └── data/
 ├── bedrock/
 │   └── data/
-├── scripts/              # Optional
 └── README.md
 ```
 
 ---
 
 ## Notes
-- World data is stored in `java/data` and `bedrock/data`, both excluded from version control.
-- The admin container does not run a Minecraft server — it's intended for running scripts or inspecting data volumes.
+- World data is stored in `bedrock/data`, excluded from version control.
 - This project is part of a broader learning process and may evolve or change over time.
+    - April 2026 - Removed Java version and admin container.
