@@ -16,3 +16,8 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Project related configs and settings
+config/
+AccountSettings.json
+LibationContext.json
