@@ -1,0 +1,20 @@
+services:
+  libation-backup:
+    image: alpine
+    volumes:
+      # Mount the books volume as read-only and the backup directory for storing the backup tar files
+      - libation_books:/books:ro
+      - ${BACKUP_DIR}:/backup # Mount local backup directory for storing backups
+      - ./config:/config:ro # Mount local config for backup
+    command:
+      - sh
+      - -c
+      - >
+        apk add --no-cache rsync &&
+        mkdir -p /backup/config /backup/books && 
+        tar czf /backup/config/lib-config-$(date +%F-%H%M%S).tar.gz -C /config . &&
+        rsync -avh --delete /books/ /backup/books/
+
+volumes:
+  libation_books:
+    external: true

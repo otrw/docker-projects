@@ -1,7 +1,7 @@
-# This docker-compose file is used to set up a Libation server container
-# Includes a named volume for books and mounts local configuration files from /config
+# This compose file is used to set up a Libation server container
+# Includes a named volume for books and mounts local configuration files from ./config
 
-# Is DOES NOT include the AccountsSettings.json file, which needs to be provided and saved in /config
+# Is DOES NOT include the AccountsSettings.json file, which needs to be provided and saved in ./config
 
 services:
   libation-server:

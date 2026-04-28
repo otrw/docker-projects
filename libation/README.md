@@ -125,3 +125,9 @@ Checks:
 - The `config` folder exists in your current directory before running the command.
 - File permissions allow container UID `1001` to write to `config`.
 
+---
+
+## RClone Install Script
+The latest official install script is:
+`sudo -v ; curl https://rclone.org/install.sh | sudo bash`
+> The version include with Ubuntu 24.04 is out of date
