@@ -6,7 +6,7 @@ A public collection of Docker-based setups I've built while learning containers,
 
 ## About
 
-I'm documenting my transition from Windows sysadmin work toward modern cloud-native tooling by building small hands-on projects in public.
+Documenting my learning toward modern cloud-native tooling by building small hands-on projects in public.
 
 Mistakes, rewrites, and simplifications are part of the process.
 
@@ -21,7 +21,8 @@ Mistakes, rewrites, and simplifications are part of the process.
 
 | Project | Description |
 |---------|-------------|
-| [`minecraft-server`](./minecraft-server) | Bedrock Minecraft server with persistence, backups, and clear setup docs |
+| [`Libation Server`](./libation/)| Libation sever with a docker volume, backups and documentation |
+| [`Minecraft Server`](./minecraft-server) | Bedrock Minecraft server with persistence, backups, and clear setup docs |
 
 ## Usage
 
