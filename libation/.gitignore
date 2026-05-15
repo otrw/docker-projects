@@ -21,4 +21,4 @@ Thumbs.db
 config/
 backups/
 AccountSettings.json
-LibationContext.json
+LibationContext.*
