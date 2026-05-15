@@ -19,5 +19,6 @@ Thumbs.db
 
 # Project related configs and settings
 config/
+backups/
 AccountSettings.json
 LibationContext.json
