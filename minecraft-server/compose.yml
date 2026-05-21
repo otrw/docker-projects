@@ -1,7 +1,7 @@
  services:
 # Minecraft Bedrock Edition server configuration
   minecraft-bedrock:
-    image: itzg/minecraft-bedrock-server
+    image: itzg/minecraft-bedrock-server:2026.5.0
     container_name: mcb-server
     ports:
       - "19132:19132/udp"
