@@ -10,6 +10,7 @@
       DIFFICULTY: ${DIFFICULTY}
       MOTD: ${MOTD}
       TZ: ${TZ}
+      VERSION: EXISTING # Use existing server files if available
     volumes:
       - ./bedrock/data:/data
     restart: unless-stopped
