@@ -91,6 +91,7 @@ minecraft-server/
 ---
 
 ## Notes
+- `VERSION=EX ISTING` added after restart failures caused by upstream version validation against existing world data.
 - World data is stored in `bedrock/data`, excluded from version control.
 - This project is part of a broader learning process and may evolve or change over time.
     - April 2026 - Removed Java version and admin container.
