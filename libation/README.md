@@ -151,7 +151,7 @@ Using `.env`
 # Copy env.template to .env
 cp env.template .env
 
-# set BACKUP_DIR to the desired backup location
+# set BACKUP_DIR to the desired backup location in .env
 vim .env
 ```
 
@@ -159,7 +159,7 @@ Run a Backup
 
 ```bash
 # Run container
-docker compose -f backup-compose.yml up
+docker compose -f backup-compose.yml run --rm libation-backup
 ```
 
 Restore a Backup
