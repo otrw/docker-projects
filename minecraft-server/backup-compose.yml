@@ -1,0 +1,16 @@
+services:
+  minecraft-backup:
+    image: alpine
+    volumes:
+      # Mount bedrock data volume to local directory.
+      - mc-bedrock-data:/data:ro
+      - ./backup:/backup # Mount local backup directory for storing backups
+    command:
+      - sh
+      - -c
+      - >
+        tar czf /backup/bedrock-$(date +%F-%H%M%S).tar.gz -C /data .
+
+volumes:
+  mc-bedrock-data:
+    external: true
