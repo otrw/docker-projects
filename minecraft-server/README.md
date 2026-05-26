@@ -91,7 +91,11 @@ minecraft-server/
 ---
 
 ## Notes
-- `VERSION=EX ISTING` added after restart failures caused by upstream version validation against existing world data.
 - World data is stored in `bedrock/data`, excluded from version control.
 - This project is part of a broader learning process and may evolve or change over time.
     - April 2026 - Removed Java version and admin container.
+- Optional additional environment variable `VERSION=EXISTING`.
+    - Prevents automatic upgrades and reuses the existing Bedrock server version already present in `/data`. 
+    - Do not use on first startup or with an empty data directory.
+    - Used as a workaround to solve a `Server 500 Error` loop after a container restart.
+
