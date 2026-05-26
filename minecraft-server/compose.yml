@@ -12,5 +12,9 @@
       TZ: ${TZ}
       # VERSION: EXISTING # Use existing server files if available
     volumes:
-      - ./bedrock/data:/data
+      - mc-bedrock-data:/data
     restart: unless-stopped
+
+ volumes:
+   mc-bedrock-data:
+    name: mc-bedrock-data
