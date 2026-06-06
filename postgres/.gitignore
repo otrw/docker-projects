@@ -1,0 +1,39 @@
+# Secrets / environment
+.env
+.env.*
+secrets*
+*.local
+
+# Keys / certs
+*.pem
+*.key
+*.p12
+*.pfx
+id_*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Shell history
+.zsh_history
+.bash_history
+
+# Project-specific generated files
+logs/
+backups/
+tmp/
+
+# Backup archives
+*.tar
+*.tar.gz
+*.tgz
+
+# Python cache
+__pycache__/
+*.pyc
