@@ -1,5 +1,7 @@
 # About
 
+TODO: Rough notes, test / verify / format
+
 An easy-to-use, self-hosted monitoring tool.
 
 Open browser, go to: http://192.168.0.111:3001
@@ -14,7 +16,7 @@ Next create an admin account and password
 
 Add host
 
-Click User in top left, select Settings from drop down menu
+Click User in top right, select Settings from drop down menu
 
 Select Docker Hosts
 
