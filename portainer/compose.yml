@@ -17,6 +17,6 @@ volumes:
 networks:
   default:
     name: portainer_network
-  npmnet:
+  shared:
     name: npmnet
     external: true

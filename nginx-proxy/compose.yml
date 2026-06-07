@@ -27,6 +27,6 @@ services:
 
 # Custom docker network to allow communication with other containers
 networks:
-  default:
+  shared:
     external: true
     name: npmnet
