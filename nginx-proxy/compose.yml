@@ -11,6 +11,9 @@ services:
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
 
+    networks:
+      - shared
+
     environment:
       TZ: "Europe/London"
 
