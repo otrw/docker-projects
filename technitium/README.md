@@ -1,1 +1,0 @@
-Technitium DNS Server
