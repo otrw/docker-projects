@@ -12,6 +12,7 @@ services:
       # - '21:21' # FTP
 
     networks:
+      - internal
       - shared
 
     environment:
@@ -30,6 +31,8 @@ services:
 
 # Custom docker network to allow communication with other containers
 networks:
+  internal:
+    name: npm_internal
   shared:
-    external: true
     name: npmnet
+    external: true
