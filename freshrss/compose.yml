@@ -10,7 +10,7 @@ services:
       - freshrss_data:/var/www/FreshRSS/data
       - freshrss_extensions:/var/www/FreshRSS/extensions
     ports:
-      - 8091:80
+      - "8091:80"
         # Default port for FreshRSS web interface is 8080:80; Changed to avoid conflict with other services
     networks:
       - default
