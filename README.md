@@ -18,6 +18,8 @@ A collection of Docker-based setups, documenting my learning toward modern cloud
 |---------|-------------|
 | [`Libation Server`](./libation/)| Libation server with a docker volume, backups and documentation |
 | [`Minecraft Server`](./minecraft-server) | Bedrock Minecraft server with persistence, backups and documentation |
+| [`Portainer Server`](./portainer/) | Web interface for managing Docker environments |
+| [`FreshRSS Server`](./freshrss/) | FreshRSS self hosted RSS & Atom Aggregator |
 
 ## Usage
 Each subfolder contains a self-contained Docker project. See the README inside each project for setup and usage instructions.
