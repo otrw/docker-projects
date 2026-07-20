@@ -8,9 +8,6 @@ services:
       - LD_SUPERUSER_PASSWORD=${LD_SUPERUSER_PASSWORD}
     volumes:
       - linkding_data:/etc/linkding/data
-    ports:
-      - "8092:9090"
-        # Default port for Linkding web interface is 9090:9090; Changed to avoid conflict with other services
     networks:
       - default
       - shared
