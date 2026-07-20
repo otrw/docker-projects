@@ -16,3 +16,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Project-specific generated files
+data/
+letsencrypt/
