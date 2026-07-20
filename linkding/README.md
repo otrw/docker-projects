@@ -34,9 +34,9 @@ Create a standard user and log in to your preferred app using this account.
 ## Networking
 
 
-
 ## Notes
 
 
 ## Documentation
 
+[linkding Documentation](https://linkding.link/installation/)

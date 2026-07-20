@@ -1,5 +1,5 @@
 services:
-  freshrss:
+  linkding:
     container_name: linkding
     image: sissbruecker/linkding:1.45.0
     restart: always
