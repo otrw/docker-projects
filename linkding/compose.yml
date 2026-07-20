@@ -1,29 +1,26 @@
 services:
   freshrss:
-    container_name: freshrss
-    image: freshrss/freshrss
+    container_name: linkding
+    image: sissbruecker/linkding:1.45.0
     restart: always
     environment:
       - CRON_MIN=1,31
       - TZ=Europe/London
     volumes:
-      - freshrss_data:/var/www/FreshRSS/data
-      - freshrss_extensions:/var/www/FreshRSS/extensions
+      - linkding_data:/etc/linkding/data
     ports:
-      - "8091:80"
-        # Default port for FreshRSS web interface is 8080:80; Changed to avoid conflict with other services
+      - "8092:9090"
+        # Default port for Linkding web interface is 9090:9090; Changed to avoid conflict with other services
     networks:
       - default
       - shared
 
 volumes:
-  freshrss_data:
-    name: freshrss_data
-  freshrss_extensions:
-    name: freshrss_extensions
+  linkding_data:
+    name: linkding_data
 networks:
   default:
-    name: freshrss_network
+    name: linkding_network
   shared:
     name: npmnet
     external: true
