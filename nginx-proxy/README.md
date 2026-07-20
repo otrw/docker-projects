@@ -18,11 +18,12 @@ docker compose up -d
 docker ps
 ```
 
-3. Browse to <ServerIP>:81 for the admin interface. You will be prompted to complete the initial setup and create an account.
+3. Browse to `<ServerIP>:81` for the admin interface. You will be prompted to complete the initial setup and create an account.
+
 ## Networking
 
-- Connects to the external npmnet Docker network, allowing NPM to proxy other containers connected to the same network.
-- Also uses a dedicated npm_internal network.
+- Connects to the external `npmnet` Docker network, allowing NPM to proxy other containers connected to the same network.
+- Also uses a dedicated `npm_internal` network.
 
 ## Notes
 
