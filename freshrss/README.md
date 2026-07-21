@@ -20,7 +20,7 @@ docker ps
 
 3. Browse to <ServerIP:Port> and complete the installation.  
 
->Optional:  
+>Optional: 
 Create a standard user and log in to your preferred app using this.
 
 ## Networking
@@ -31,6 +31,16 @@ Create a standard user and log in to your preferred app using this.
 
 - Also supports `.env` usage.
 - No backup configured. Current feed/configuration data is considered non-critical; revisit if usage or stored data increases.
+- Some System Settings can only be made by directly editing `config.php`. As FreshRSS data is stored in a named Docker volume (as opposed to a bind mount where files could be edited directly from the host path), the configuration file can be conveniently copied out and then back in.
+
+```bash
+# Copy config to edit locally
+docker cp freshrss:/var/www/FreshRSS/data/config.php ./config.php
+# Copy back after edits
+docker cp ./config.php  freshrss:/var/www/FreshRSS/data/config.php
+# Restart container to reload config
+docker restart freshrss
+```
 
 ## Documentation
 
