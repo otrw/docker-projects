@@ -40,7 +40,18 @@ Create a standard user and log in to your preferred app using this account.
 docker exec -it linkding python manage.py createsuperuser --username=<user> --email=<email>
 ```
 
+- Some System Settings can only be made by directly editing `config.php`. As FreshRSS data is stored in a named Docker volume, the configuration file can be conveniently copied out and then back in.
+
+```bash
+# Copy config to edit locally
+docker cp freshrss:/var/www/FreshRSS/data/config.php ./config.php
+# Copy back after edits
+docker cp ./config.php  freshrss:/var/www/FreshRSS/data/config.php
+# Restart container to reload config
+docker restart freshrss
+```
+
 ## Documentation
 
-[linkding Documentation](https://linkding.link/installation/)
+[linkding Documentation](https://linkding.link/installation/)  
 [Enable OIDC](https://linkding.link/options/#ld_enable_oidc)
