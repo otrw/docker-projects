@@ -1,8 +1,8 @@
 services:
-  app:
+  npm:
+    container_name: npm
     image: 'jc21/nginx-proxy-manager:2.15.1'
     restart: unless-stopped
-
     ports:
       # These ports are in format <host-port>:<container-port>
       - '80:80' # Public HTTP Port
