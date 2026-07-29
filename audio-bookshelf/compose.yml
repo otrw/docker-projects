@@ -4,8 +4,9 @@ services:
     image: ghcr.io/advplyr/audiobookshelf:2.36.0
     # ABS runs on port 13378 by default. If you want to change
     # the port, only change the external port
-    ports:
-      - 13378:80
+    #ports:
+    #  - 13378:80
+    # Managed by Nginx Proxy Manager, so no need to expose the port.
     volumes:
       # These volumes are needed to keep your library persistent
       # and allow media to be accessed by the ABS server.
