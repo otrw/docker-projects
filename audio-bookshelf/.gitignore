@@ -1,0 +1,27 @@
+# Secrets / environment
+.env
+.env.*
+
+# Keys / certificates
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
+# Editor / OS clutter
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project related configs and settings
+config/
+backups/
+audiobooks/
+metadata/
+podcasts/
+AccountSettings.json
+LibationContext.*
