@@ -21,6 +21,7 @@ A collection of Docker-based setups, documenting my learning toward modern cloud
 | [`Nginx Proxy Manager`](./nginx-proxy/) | Reverse Proxy and SSL Certificate management |
 | [`Portainer`](./portainer/) | Web interface for managing container environments |
 | [`FreshRSS`](./freshrss/) | Self hosted RSS & Atom Aggregator |
+| [`Audio Bookshelf`](./audio-bookshelf/) | Self hosted Audio book and Podcast server |
 
 ## Usage
 
@@ -34,6 +35,5 @@ Each subfolder contains a self-contained Docker project. See the README inside e
 - Backup tools (tar, rsync, rclone)
 
 ## Planned Projects
-- Reverse Proxy
+
 - Monitoring Stack
-- Simple Automation jobs
