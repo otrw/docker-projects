@@ -20,8 +20,9 @@ A collection of Docker-based setups, documenting my learning toward modern cloud
 | [`Minecraft Server`](./minecraft-server) | Bedrock Minecraft server with persistence, backups and documentation |
 | [`Nginx Proxy Manager`](./nginx-proxy/) | Reverse Proxy and SSL Certificate management |
 | [`Portainer`](./portainer/) | Web interface for managing container environments |
-| [`FreshRSS`](./freshrss/) | Self hosted RSS & Atom Aggregator |
-| [`Audio Bookshelf`](./audio-bookshelf/) | Self hosted Audio book and Podcast server |
+| [`FreshRSS`](./freshrss/) | RSS & Atom Aggregator |
+| [`Linkding`](./linkding/) | Minimal Bookmark manager |
+| [`Audio Bookshelf`](./audio-bookshelf/) | Audio book and Podcast server |
 
 ## Usage
 
